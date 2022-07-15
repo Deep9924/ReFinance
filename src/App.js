@@ -1,7 +1,8 @@
 import './App.css';
-import {React, useState} from 'react';
-import Navbar from "./components/layouts/navbar";
-import Logo from "./components/layouts/logo";
+import {React} from 'react'; //, useState
+import Navbar from './components/layouts/navbar';
+import Logo from './components/layouts/logo';
+
 
 const App = () => {
 

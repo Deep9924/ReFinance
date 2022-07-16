@@ -1,26 +1,43 @@
-import React from 'react';
-import {BrowserRouter as Router, Route, Navigate, Routes} from 'react-router-dom';
-import Contact from '../../../pages/Contact/Contact';
-import Favourites from '../../../pages/Favourites/Favourites';
-import Home from '../../../pages/Home/Home';
-import Stock from '../../../pages/Stock/Stock';
+import React, {useState} from 'react';
+import { NavbarContainer, LeftContainer, RightContainer, 
+         NavbarInnerContainer, NavbarExtendedContainer, NavbarLinkExtended,
+         NavbarLinksContainer, NavbarLink, Logo, OpenLinksButton
+        } from '../../../styles/Navbar.style';
+import LogoImg from '../../assets/logo.png';
 
 const Navbar = () => {
+  const [ extendNavbar, setExtendNavbar ] = useState(false);
   return (
-    <Router>
-        <main>
-          <Routes>
-            <Route path="/home" exact><Home/></Route>
-            <Route path="/contact" exact><Contact/></Route>
-            <Route path="/favourites" exact><Favourites/></Route>
-            <Route path="/stock" exact><Stock/></Route>
-            <Navigate to="/"/>
-          </Routes>
-          
-        </main>
-    </Router>
+    <NavbarContainer extendNavbar = {extendNavbar}>
+      <NavbarInnerContainer>
+        <LeftContainer>
+          <Logo src={LogoImg}></Logo>
+        </LeftContainer>
+        <RightContainer>
+          <NavbarLinksContainer>
+            <NavbarLink to="/">Home</NavbarLink>
+            <NavbarLink to="/contact">Contact</NavbarLink>
+            <NavbarLink to="/favourites">Favourites</NavbarLink>
+            <NavbarLink to="/stock">Stock</NavbarLink>
+            <OpenLinksButton onClick={() => {
+                setExtendNavbar((curr) => !curr);
+              }}> 
+              {extendNavbar ? <> &#10005; </> : <> &#8801; </>}
+            </OpenLinksButton>
+          </NavbarLinksContainer>
+        </RightContainer>
+      </NavbarInnerContainer>
+      { extendNavbar && (
+        <NavbarExtendedContainer>
+            <NavbarLinkExtended to="/">Home</NavbarLinkExtended>
+            <NavbarLinkExtended to="/contact">Contact</NavbarLinkExtended>
+            <NavbarLinkExtended to="/favourites">Favourites</NavbarLinkExtended>
+            <NavbarLinkExtended to="/stock">Stock</NavbarLinkExtended>
+        </NavbarExtendedContainer>
+      )}
+    </NavbarContainer>
   );
 }
-  
+
 export default Navbar;
   

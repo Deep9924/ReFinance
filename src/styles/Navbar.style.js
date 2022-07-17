@@ -1,4 +1,4 @@
-import styled from "styled-components";
+/*import styled from "styled-components";
 import { Link } from 'react-router-dom';
 
 export const NavbarContainer = styled.nav`
@@ -14,16 +14,17 @@ export const NavbarContainer = styled.nav`
 `;
 
 export const LeftContainer = styled.div`
-    flex: 30%;
+    flex: 20%;
     display: felx;
     align-items: center;
     padding-left: 5%;
 `;
 export const RightContainer = styled.div`
-    flex: 70%;
+    flex: 50%;
     display: felx;
     justify-content: flex-end;
     padding-right: 50px;
+    align-items: center;
 `;
 
 export const NavbarExtendedContainer = styled.div`
@@ -85,7 +86,7 @@ export const OpenLinksButton = styled.button`
     }
 `;
 
-
+*/
 
 /*
 

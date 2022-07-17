@@ -5,3 +5,24 @@
   padding: 0;
 }
 
+:root{
+  --primary: #ffffff;
+}
+
+ul{
+  list-style-type: none;
+}
+
+a{
+  text-decoration: none;
+  color: #F8F8F8;
+}
+
+body{
+  color: #333;
+  line-height:1.5;
+}
+
+.primary-color{
+  color: var(--primary);
+}

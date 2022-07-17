@@ -1,4 +1,54 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import './Navbar.css';
+import LogoImg from '../../assets/logo.png';
+import { Link } from 'react-router-dom';
+import {FaBars, FaTimes} from 'react-icons/fa';
+
+const Navbar = () => {
+  const [ click, setClick ] = useState(false);
+  const handleClick = () => setClick(!click); 
+  return (
+    <div className="navbar">
+      <div className="logo"> 
+        <img src={LogoImg} alt="ReFinanced-Logo"/>
+      </div>
+      <ul className={click ? "nav-menu active" : "nav-menu"}> 
+        <li className="nav-item" onClick={handleClick}><Link to="/">Home</Link></li>
+        <li className="nav-item" onClick={handleClick}><Link to="/contact">Contact</Link></li>
+        <li className="nav-item" onClick={handleClick}><Link to="/favourites">Favourites</Link></li>
+        <li className="nav-item" onClick={handleClick}><Link to="/stock">Stock</Link></li>
+      </ul>
+      <div className="hamburger" onClick={handleClick}>
+        {click ? (<FaTimes size={30} style={{color: '#F8F8F8'}}/>) : <FaBars size={30} style={{color: '#F8F8F8'}} />}
+      </div>
+    </div>
+  );
+}
+
+export default Navbar;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*import React, {useState} from 'react';
 import { NavbarContainer, LeftContainer, RightContainer, 
          NavbarInnerContainer, NavbarExtendedContainer, NavbarLinkExtended,
          NavbarLinksContainer, NavbarLink, Logo, OpenLinksButton
@@ -40,4 +90,4 @@ const Navbar = () => {
 }
 
 export default Navbar;
-  
+  */

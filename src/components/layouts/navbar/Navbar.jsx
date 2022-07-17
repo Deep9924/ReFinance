@@ -18,6 +18,9 @@ const Navbar = () => {
         <li className="nav-item" onClick={handleClick}><Link to="/favourites">Favourites</Link></li>
         <li className="nav-item" onClick={handleClick}><Link to="/stock">Stock</Link></li>
       </ul>
+      <div className="nav-login">
+      <li className="nav-item" onClick={handleClick}><Link to="/login">Log In</Link></li>
+      </div>
       <div className="hamburger" onClick={handleClick}>
         {click ? (<FaTimes size={30} style={{color: '#F8F8F8'}}/>) : <FaBars size={30} style={{color: '#F8F8F8'}} />}
       </div>

@@ -6,14 +6,17 @@
     align-items: center;
     padding: 1rem;
     background: rgb(10,48,66);
-    
 }
 
 .navbar img{
-    width: 200px;
+    width: 180px;
 }
 
 .nav-menu{
+    display:flex;
+}
+
+.nav-login{
     display:flex;
 }
 

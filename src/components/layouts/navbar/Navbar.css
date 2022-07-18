@@ -86,7 +86,7 @@
         width: 0;
     }
     
-    .nav-item:focus{
+    .nav-item:hover, .nav-item:active{
         color:rgb(10,48,66);
         background: #ffffff;
     }

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './Navbar.css';
 import LogoImg from '../../assets/logo.png';
-import { Link } from 'react-router-dom';
-import {FaBars, FaTimes} from 'react-icons/fa';
+import { NavLink } from 'react-router-dom';
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 const Navbar = () => {
   const [ click, setClick ] = useState(false);
@@ -10,23 +10,30 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="logo"> 
-        <img src={LogoImg} alt="ReFinanced-Logo"/>
+        <NavLink onClick={handleClick => setClick(false)} exact to="/" ><img src={LogoImg} alt="ReFinanced-Logo"/></NavLink> 
       </div>
       <ul className={click ? "nav-menu active" : "nav-menu"}> 
-        <li className="nav-item" onClick={handleClick}><Link to="/">Home</Link></li>
-        <li className="nav-item" onClick={handleClick}><Link to="/contact">Contact</Link></li>
-        <li className="nav-item" onClick={handleClick}><Link to="/favourites">Favourites</Link></li>
-        <li className="nav-item" onClick={handleClick}><Link to="/stock">Stock</Link></li>
-      </ul>
-      <div className="nav-login">
-      <li className="nav-item" onClick={handleClick}><Link to="/login">Log In</Link></li>
-      </div>
+        <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink exact to="/" activeclassname="active" >Home</NavLink></li>
+        <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink exact to="/contact" activeclassname="active">Contact</NavLink></li>
+        <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink exact to="/favourites" activeclassname="active">Favourites</NavLink></li>
+        <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink exact to="/stock" activeclassname="active">Stock</NavLink></li>
+        {click === true ? (
+          <div className="nav-login-small">
+            <hr className="line"></hr>
+            <li className="nav-item" onClick={handleClick}><NavLink to="/login" activeclassname="active">Log In</NavLink></li>
+          </div>) : <></>
+        }
+      </ul> 
+        <div className={click ? "nav-login active" : "nav-login"}>
+          <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink exact to="/login" activeclassname="active">Log In</NavLink></li>
+        </div>
       <div className="hamburger" onClick={handleClick}>
         {click ? (<FaTimes size={30} style={{color: '#F8F8F8'}}/>) : <FaBars size={30} style={{color: '#F8F8F8'}} />}
       </div>
     </div>
   );
 }
+
 
 export default Navbar;
 

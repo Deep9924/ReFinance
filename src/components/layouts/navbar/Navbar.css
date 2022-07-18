@@ -76,6 +76,21 @@
         left: 0;
     }
 
+    .nav-item .active{
+        background: none;
+        color: #ffffff;
+        padding: 0;
+    }
+
+    .nav-item:hover::after {
+        width: 0;
+    }
+    
+    .nav-item:focus{
+        color:rgb(10,48,66);
+        background: #ffffff;
+    }
+
     .nav-item{
         padding: 8px 0px; 
         font-size: 16px;
@@ -97,5 +112,6 @@
     .line{
         border: 1px solid rgba(255, 255, 255, 0.253);
         border-radius: 5px;
+        margin: 10px 0;
     }
 }

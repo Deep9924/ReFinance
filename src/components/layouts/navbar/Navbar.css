@@ -51,7 +51,7 @@
     width: 100%;
 }
 
-.nav-login-small{
+.nav-login-signup, .line{
     display: none
 }
  
@@ -62,12 +62,12 @@
 @media screen and (max-width: 700px) {
 
     .navbar{
-        height: 45px;
+        height: 60px;
     }
 
     .navbar img{
         margin-top: 5px;
-        width: 30%;
+        width: 38%;
     }
 
     .hamburger{
@@ -78,7 +78,7 @@
     .nav-menu{
         position: fixed;
         left: -100%;
-        top: 45px;
+        top: 60px;
         flex-direction: column;
        /* 
        justify-content: center; */
@@ -123,13 +123,86 @@
         display: none;
     }
 
-    .nav-login-small{
+    .nav-login-signup{
         display: unset;
     }
 
     .line{
+        display: unset;
         border: 1px solid rgba(255, 255, 255, 0.253);
         border-radius: 5px;
+        margin: 5px 0;
+    }
+
+    .nav-login-signup{
         margin: 10px 0;
     }
+
+    .nav-login-small{
+        font-size: 20px;
+        width: 90px;
+        background-image: linear-gradient(to right, #006175 0%, #00a950 100%);
+        border-radius: 40px;
+        display: block;
+        height: 40px;
+        padding: 6px;
+        position: relative;
+        width: 4em;
+        z-index: 2;
+        text-align: center;
+    }
+
+    .nav-login-small a:hover {
+        color: #fff;
+    }
+    .nav-login-small a{
+        color: #00a84f;
+        align-items: center;
+        background: rgb(10,48,66);
+        border-radius: 40px;
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        transition: background 0.5s ease;
+        width: 100%;
+      }
+
+    .nav-login-small a:hover{
+        background: transparent;
+    }
+    
+
+
+
 }
+
+/*
+#button-5 {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+#button-5 a {
+  position: relative;
+  transition: all .45s ease-Out;
+}
+
+#translate {
+  transform: rotate(50deg);
+  width: 100%;
+  height: 250%;
+  left: -200px;
+  top: -30px;
+  background: #BFC0C0;
+  position: absolute;
+  transition: all .3s ease-Out;
+}
+
+#button-5:hover #translate {
+  left: 0;
+}
+
+#button-5:hover a {
+  color: #2D3142;
+}*/

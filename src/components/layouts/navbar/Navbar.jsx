@@ -17,14 +17,21 @@ const Navbar = () => {
         <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink exact to="/contact" activeclassname="active">Contact</NavLink></li>
         <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink exact to="/favourites" activeclassname="active">Favourites</NavLink></li>
         <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink exact to="/stock" activeclassname="active">Stock</NavLink></li>
-        <div className="nav-login-small">
-          <hr className="line"></hr>
-          <li className="nav-item" onClick={handleClick}><NavLink to="/login" activeclassname="active">Log In</NavLink></li>
+        <hr className="line"></hr>
+        <div className="nav-login-signup"> 
+          <div className="nav-login-small" onClick={handleClick}><NavLink to="/login">Log In</NavLink></div>
+          <div className="nav-signup-small" onClick={handleClick}><NavLink to="/signup">Log In</NavLink></div>
         </div>
       </ul> 
+
+      <div>
+        <div className="nav-login">
+          <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink exact to="/login" activeclassname="active">Log In</NavLink></li>
+        </div>
         <div className={click ? "nav-login active" : "nav-login"}>
           <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink exact to="/login" activeclassname="active">Log In</NavLink></li>
         </div>
+      </div>
       <div className="hamburger" onClick={handleClick}>
         {click ? (<FaTimes size={30} style={{color: '#F8F8F8'}}/>) : <FaBars size={30} style={{color: '#F8F8F8'}} />}
       </div>

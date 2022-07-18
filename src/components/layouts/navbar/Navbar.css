@@ -50,19 +50,37 @@
 .nav-item:hover::after {
     width: 100%;
 }
+
+.nav-login-small{
+    display: none
+}
  
 .hamburger{
     display: none;
 }
 
 @media screen and (max-width: 700px) {
+
+    .navbar{
+        height: 45px;
+    }
+
+    .navbar img{
+        margin-top: 5px;
+        width: 30%;
+    }
+
+    .hamburger{
+        width: 6%;
+        margin-right: 5px;
+    }
+
     .nav-menu{
         position: fixed;
         left: -100%;
-        top: 100px;
+        top: 45px;
         flex-direction: column;
        /* 
-       #ffffffea
        justify-content: center; */
         background: rgb(10,48,66);
         width: 100%;
@@ -86,10 +104,10 @@
         width: 0;
     }
     
-    .nav-item:hover, .nav-item:active{
+    /*.nav-item:hover, .nav-item:active{
         color:rgb(10,48,66);
         background: #ffffff;
-    }
+    }*/
 
     .nav-item{
         padding: 8px 0px; 
@@ -106,7 +124,7 @@
     }
 
     .nav-login-small{
-
+        display: unset;
     }
 
     .line{

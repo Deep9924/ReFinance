@@ -17,12 +17,10 @@ const Navbar = () => {
         <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink exact to="/contact" activeclassname="active">Contact</NavLink></li>
         <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink exact to="/favourites" activeclassname="active">Favourites</NavLink></li>
         <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink exact to="/stock" activeclassname="active">Stock</NavLink></li>
-        {click === true ? (
-          <div className="nav-login-small">
-            <hr className="line"></hr>
-            <li className="nav-item" onClick={handleClick}><NavLink to="/login" activeclassname="active">Log In</NavLink></li>
-          </div>) : <></>
-        }
+        <div className="nav-login-small">
+          <hr className="line"></hr>
+          <li className="nav-item" onClick={handleClick}><NavLink to="/login" activeclassname="active">Log In</NavLink></li>
+        </div>
       </ul> 
         <div className={click ? "nav-login active" : "nav-login"}>
           <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink exact to="/login" activeclassname="active">Log In</NavLink></li>

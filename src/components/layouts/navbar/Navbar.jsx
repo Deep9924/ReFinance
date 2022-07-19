@@ -3,6 +3,7 @@ import './Navbar.css';
 import LogoImg from '../../assets/logo.png';
 import { NavLink } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import Search from '../search/Search';
 
 const Navbar = () => {
   const [ click, setClick ] = useState(false);
@@ -13,22 +14,18 @@ const Navbar = () => {
         <NavLink onClick={handleClick => setClick(false)} exact to="/" ><img src={LogoImg} alt="ReFinanced-Logo"/></NavLink> 
       </div>
       <ul className={click ? "nav-menu active" : "nav-menu"}> 
+        <div className="nav-login-signup"> 
+          <div className="nav-login-small" onClick={handleClick}><NavLink to="/login">Sign in</NavLink></div>
+        </div>
         <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink exact to="/" activeclassname="active" >Home</NavLink></li>
         <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink exact to="/contact" activeclassname="active">Contact</NavLink></li>
         <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink exact to="/favourites" activeclassname="active">Favourites</NavLink></li>
         <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink exact to="/stock" activeclassname="active">Stock</NavLink></li>
         <hr className="line"></hr>
-        <div className="nav-login-signup"> 
-          <div className="nav-login-small" onClick={handleClick}><NavLink to="/login">Log In</NavLink></div>
-          <div className="nav-signup-small" onClick={handleClick}><NavLink to="/signup">Log In</NavLink></div>
-        </div>
       </ul> 
-
+      <Search />
       <div>
         <div className="nav-login">
-          <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink exact to="/login" activeclassname="active">Log In</NavLink></li>
-        </div>
-        <div className={click ? "nav-login active" : "nav-login"}>
           <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink exact to="/login" activeclassname="active">Log In</NavLink></li>
         </div>
       </div>

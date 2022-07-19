@@ -15,6 +15,7 @@
 
 .nav-menu{
     display:flex;
+    justify-content: space-between;
 }
 
 .nav-login{
@@ -26,16 +27,21 @@
     display: inline-block;
     color: rgb(255, 255, 255);
     text-decoration: none;
-    cursor: pointer
+    cursor: pointer;
 }
 
 .nav-item .active{
+    display: flex;
+    color: #92f3a9;
+    /*
     color:rgb(10,48,66);
     padding: 13px;
     margin: 0;
     width: 0;
     height: 2px;
     background: #ffffff;
+    border: solid 2px #fff;
+    */
 }
 
 .nav-item::after {

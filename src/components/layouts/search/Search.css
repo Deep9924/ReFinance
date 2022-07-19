@@ -1,16 +1,25 @@
 .search{
-    align-items: center;
+    width: 40%;
+    margin: 0 5px;
+    overflow: hidden;
+}
+.search input{
+    background-color: #ffffff;
+    font-size: 1rem;
+    border: 0;
+    border-radius: 3px;
+    padding: 7px;
+    height: 30px;
+    margin: 10%;
+    width: 80%;   
 }
 
+input:focus{
+    outline: none;
+}
 
-
-
-
-
-
-.search-icon{
-    display: inline-block;
-    color: #ffffff;
-    
-    padding: 10px  2px;
+@media screen and (max-width: 700px) {
+    .search{
+        width:60vh;
+    }
 }

@@ -1,24 +1,17 @@
 import React from 'react';
-import { AiOutlineSearch } from 'react-icons/ai'
 import './Search.css';
+// import Data from "./data.json";
 
-const Search = () => {
+const Search = ({placeholder, data}) => {
     return (
-        <>
-            <div className="search">
-                <input type="text" placeholder="Search..."></input>
-                <div className="search-icon">
-                    <AiOutlineSearch />
-                </div>
+        <div className="search">
+            <div className="search-input">
+                <input type="text" placeholder={placeholder}></input> {/*Can have data field: data = {Data}*/}
             </div>
-            
-            
-    
-    
-    
-    
-    
-        </>
+            <div className="search-result">
+                
+            </div>
+        </div>
     )
 }
 

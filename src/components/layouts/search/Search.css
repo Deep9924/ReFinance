@@ -20,11 +20,3 @@ input:focus{
     outline: none;
 }
 
-.search-result{
-    background: black;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    height: 100px;
-    overflow: scroll;
-}

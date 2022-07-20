@@ -30,3 +30,6 @@ body{
   color: var(--primary);
 }
 
+h1{
+  z-index: 1;
+}

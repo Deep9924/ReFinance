@@ -4,7 +4,7 @@ import LogoImg from '../../assets/logo.png';
 import { NavLink } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import Search from '../search/Search';
-import Data from "../Data.json";
+
 
 const Navbar = () => {
   const [ click, setClick ] = useState(false);
@@ -16,7 +16,7 @@ const Navbar = () => {
         <div className="logo"> 
           <NavLink onClick={handleClick => setClick(false)} exact to="/" ><img src={LogoImg} alt="ReFinanced-Logo"/></NavLink> 
         </div>
-        <Search placeholder="Search..." data={Data}/>
+        <Search placeholder="Search..."/>
         <ul className={click ? "nav-menu active" : "nav-menu"}> 
           <div className="nav-login-signup"> 
             <div className="nav-login-small" onClick={handleClick}><NavLink to="/login">Sign in</NavLink></div>
@@ -27,7 +27,7 @@ const Navbar = () => {
           <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink exact to="/stock" activeclassname="active">Stock</NavLink></li>
           <hr className="line"></hr>
         </ul> 
-        
+  
         <div>
           <div className="nav-login">
             <li className="nav-login-page" onClick={handleClick => setClick(false)}><NavLink exact to="/login" activeclassname="active">Log In</NavLink></li>
@@ -38,12 +38,19 @@ const Navbar = () => {
         </div>
       </div>
       <div className="search-bar-small navbar">
-       <Search placeholder="Search..."  data={Data}/>
+       <Search placeholder="Search..."/>
       </div>
+      <div> 
+      </div>
+      
     </>
   );
 }
-
+/*
+import SearchResult from '../search_result/SearchResult';
+import Data from "../Data.json";
+        <SearchResult data={Data}/>     
+*/
 
 export default Navbar;
 

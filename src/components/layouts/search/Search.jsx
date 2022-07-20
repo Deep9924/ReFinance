@@ -1,14 +1,18 @@
 import React from 'react';
 import './Search.css';
+import SearchResult from '../search_result/SearchResult';
+import Data from '../Data.json';
 
-const Search = ({placeholder, data}) => {
+const Search = ({placeholder}) => {
     return (
-        <div className="search">
-            <div className="search-input">
-                <input type="text" placeholder={placeholder}></input> {/*Can have data field: data = {Data}*/}
+        <>
+            <div className="search">
+                <div className="search-input">
+                    <input type="text" placeholder={placeholder}></input> {/*Can have data field: data = {Data}*/}
+                </div>
             </div>
-            
-        </div>
+            <SearchResult data={Data}/>
+        </>
     )
 }
 /*

@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     padding: 1rem;
-    padding-bottom: 0;
+    padding-top: 18px;
     z-index: 10;
     background: rgb(10,48,66);
 }
@@ -81,10 +81,17 @@
 
     .navbar{
         height: 60px;
+        width: 101%;
+        overflow: hidden;
     }
 
     .navbar img{
-        width: 45%;
+        width: 65%;
+        display: inline-block;     
+        position: relative;    
+        z-index: 1;     
+        padding: 1em;     
+        margin: -1em;
     }
 
     .navbar:nth-child(1) input{
@@ -92,6 +99,7 @@
     }
 
     .search-bar-small{
+        margin-top: -10px;
         padding: 0;
         height: 50px;
         display: flex;
@@ -105,8 +113,11 @@
     }
     
     .hamburger{
-        width: 6%;
-        margin-right: 5px;
+        display: inline-block;     
+        position: relative;    
+        z-index: 1;     
+        padding: 1.2em;     
+        margin: -1em;
     }
 
     .nav-menu{
@@ -118,7 +129,7 @@
        /* 
        justify-content: center; */
         background: rgb(10,48,66);
-        width: 100%;
+        width: 45%;
         height: 100%;
         padding: 15px;
         text-align: left;
@@ -132,7 +143,6 @@
     .nav-item .active{
         background: none;
         color: #ffffff;
-        padding: 0;
     }
 
     .nav-item:hover::after {
@@ -147,7 +157,16 @@
     .nav-item{
         padding: 8px 0px; 
         font-size: 16px;
-        justify-content: center;
+    }
+
+    .nav-item a{
+        display: inline-block;     
+        position: relative;    
+        z-index: 1;     
+        padding: 1.2em;     
+        margin: -1em;
+        padding-right: 2em;     
+        margin-right: -2em;
     }
 
     .hamburger{

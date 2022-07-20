@@ -4,6 +4,7 @@ import LogoImg from '../../assets/logo.png';
 import { NavLink } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import Search from '../search/Search';
+import Data from "../Data.json";
 
 const Navbar = () => {
   const [ click, setClick ] = useState(false);
@@ -15,7 +16,7 @@ const Navbar = () => {
         <div className="logo"> 
           <NavLink onClick={handleClick => setClick(false)} exact to="/" ><img src={LogoImg} alt="ReFinanced-Logo"/></NavLink> 
         </div>
-        <Search placeholder="Search..."/>
+        <Search placeholder="Search..." data={Data}/>
         <ul className={click ? "nav-menu active" : "nav-menu"}> 
           <div className="nav-login-signup"> 
             <div className="nav-login-small" onClick={handleClick}><NavLink to="/login">Sign in</NavLink></div>
@@ -37,7 +38,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className="search-bar-small navbar">
-       <Search placeholder="Search..."/>
+       <Search placeholder="Search..."  data={Data}/>
       </div>
     </>
   );

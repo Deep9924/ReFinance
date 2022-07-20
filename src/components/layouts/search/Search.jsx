@@ -1,6 +1,5 @@
 import React from 'react';
 import './Search.css';
-// import Data from "./data.json";
 
 const Search = ({placeholder, data}) => {
     return (
@@ -9,7 +8,10 @@ const Search = ({placeholder, data}) => {
                 <input type="text" placeholder={placeholder}></input> {/*Can have data field: data = {Data}*/}
             </div>
             <div className="search-result">
-                
+                {data.map((value,key) => {
+                    return  <div> {value.title} </div>;
+                    //<a href={value.link} target="_blank"> {" "} {value.title} {" "}</a>;
+                })}
             </div>
         </div>
     )

@@ -36,6 +36,9 @@ const Navbar = () => {
           {click ? (<FaTimes size={30} style={{color: '#F8F8F8'}}/>) : <FaBars size={30} style={{color: '#F8F8F8'}} />}
         </div>
       </div>
+      <div className="search-bar-small navbar">
+       <Search placeholder="Search..."/>
+      </div>
     </>
   );
 }

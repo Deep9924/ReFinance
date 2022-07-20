@@ -7,15 +7,17 @@ const Search = ({placeholder, data}) => {
             <div className="search-input">
                 <input type="text" placeholder={placeholder}></input> {/*Can have data field: data = {Data}*/}
             </div>
-            <div className="search-result">
+            
+        </div>
+    )
+}
+/*
+<div className="search-result">
                 {data.map((value,key) => {
                     return  <div> {value.title} </div>;
                     //<a href={value.link} target="_blank"> {" "} {value.title} {" "}</a>;
                 })}
             </div>
-        </div>
-    )
-}
-
+*/
 
 export default Search;

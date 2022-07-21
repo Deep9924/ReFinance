@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
 import './Search.css';
-import SearchResult from '../search_result/SearchResult';
+//import SearchResult from '../search_result/SearchResult';
 
 
 const Search = ({placeholder, data}) => {
-    const  [query, setQuery] = useState("");
+    //const  [query, setQuery] = useState("");
 
     return (
-        <>
-            <div className="search">
-                <div className="search-input">
-                    <input type="text" placeholder={placeholder} onChange={e=> setQuery(e.target.value)}></input> {/*Can have data field: data = {Data}*/}
-                </div>
+        <div className="search">
+            <div className="search-input">
+                <input type="text" placeholder={placeholder} ></input> {/*onChange={e=> setQuery(e.target.value)}  ///Can have data field: data = {Data}*/}
             </div>
-        </>
+        </div>
     )
 }
 /*

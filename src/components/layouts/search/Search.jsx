@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Search.css';
-//import SearchResult from '../search_result/SearchResult';
+//, { useState } import SearchResult from '../search_result/SearchResult';
 
 
 const Search = ({placeholder, data}) => {

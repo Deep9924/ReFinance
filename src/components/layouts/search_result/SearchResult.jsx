@@ -4,9 +4,8 @@ import './SearchResult.css';
 const SearchResult = ({data, query}) => {
     return (
         <div className="search-result">
-        {data.map((data) => ( <p className="card"> {data.title} </p>))}
+        {data.map((data) => ( <div className="card"> {data.title} </div>))}
         </div>
-
     )
 }
 

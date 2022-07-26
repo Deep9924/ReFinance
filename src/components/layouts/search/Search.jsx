@@ -1,37 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Search.css';
-//import SearchResult from '../search_result/SearchResult';     , { useState }
-import { AiOutlineSearch } from 'react-icons/ai';
+import { AiOutlineSearch, AiOutlineClose } from 'react-icons/ai';
+import SearchResult from '../search_result/SearchResult';
 
+const Search = ({ placeholder, data}) => {
+    const [ filteredData, setfilteredData ] = useState([]);
+    const [ wordEntered, setWordEntered ] = useState("");
 
-const Search = ({ placeholder, data }) => {
-    //const  [query, setQuery] = useState("");
+    const handleFilter = (e) => {
+      const searchWord = e.target.value;
+      setWordEntered(searchWord);
+      const newFilter = data.filter((value) => {
+        return value.title.toLowerCase().includes(searchWord.toLowerCase());
+      });
+
+      searchWord === "" ? setfilteredData([]) : setfilteredData(newFilter);
+    }
+
+    const clearBtn = () => {
+        setfilteredData([]);
+        setWordEntered("");
+    }
 
     return (
         <div className="search">
             <div className="search-input">
-                <input type="text" placeholder={placeholder} ></input> 
+                <input type="text" placeholder={placeholder} value={ wordEntered } onChange={ handleFilter }></input> 
                 <div className="search-icon">
-                    <AiOutlineSearch />
+                    { wordEntered.length === 0 ?  
+                        <AiOutlineSearch/> 
+                        : 
+                        <AiOutlineClose id="clear-input-Btn" onClick={ clearBtn } /> 
+                    }
                 </div>
-            </div>
-            
+            </div> 
+            { filteredData.length !== 0 && (
+                <SearchResult data={filteredData}/>
+            )}
         </div>
     )
 }
-
-/* {onChange={e=> setQuery(e.target.value)}  ///Can have data field: data = {Data}}*/
-/*
-<div> 
-                <SearchResult data={query} />
-            </div>
-
-<div className="search-result">
-                {data.map((value,key) => {
-                    return  <div> {value.title} </div>;
-                    //<a href={value.link} target="_blank"> {" "} {value.title} {" "}</a>;
-                })}
-            </div>
-*/
 
 export default Search;

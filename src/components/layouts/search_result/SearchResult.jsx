@@ -1,14 +1,15 @@
 import React from 'react';
 import './SearchResult.css';
 
-const SearchResult = ({data, query}) => {
+const SearchResult = ({data}) => {
+    
     return (
         <div className="search-result">
-        {data.map((data) => ( <div className="card"> {data.title} </div>))}
+        {data.slice(0, 15).map((value, key) => { return ( <div className="card"> {value.title} </div>); })}
         </div>
     )
 }
-
+// What does slice do
 /*<div className="search-result">
 {data.map((data) => (    <p> {data.title} </p>))}
             

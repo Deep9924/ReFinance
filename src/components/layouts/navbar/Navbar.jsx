@@ -5,11 +5,11 @@ import { NavLink } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import Search from '../search/Search';
 import Data from '../Data.json';
-import SearchResult from '../search_result/SearchResult';
 
 const Navbar = () => {
   const [ click, setClick ] = useState(false);
   const handleClick = () => setClick(!click); 
+
 
   return (
     <>
@@ -20,10 +20,6 @@ const Navbar = () => {
         </div>
         <div className="search-bar-main">
           <Search placeholder="Search..." data={Data}/>
-          <div className="search-main-result">
-            <SearchResult data={Data}/>
-          </div>
-          
         </div>
 
         <div className="navmenu-login">
@@ -42,7 +38,6 @@ const Navbar = () => {
             <hr className="line"></hr>
           </ul> 
     
-            
           <div className="hamburger" onClick={handleClick}>
             {click ? (<FaTimes size={30} style={{color: '#F8F8F8'}}/>) : <FaBars size={30} style={{color: '#F8F8F8'}} />}
           </div>
@@ -50,11 +45,6 @@ const Navbar = () => {
       </div>
       <div className="search-bar-small navbar">
         <Search placeholder="Search..." data={Data}/>
-        <div className="search-main-result">
-            <SearchResult data={Data}/>
-        </div>
-      </div>
-      <div> 
       </div>
       
     </>

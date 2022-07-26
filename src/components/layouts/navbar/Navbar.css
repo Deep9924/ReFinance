@@ -20,10 +20,6 @@
     margin: 15px;
 }
 
-.search-bar-main input{
-    width:100%;
-}
-
 .navmenu-login{
     float: right;
     width:55vw;
@@ -31,7 +27,7 @@
 
 .nav-menu{
     display:flex;
-    justify-content: space-between;
+    justify-content: space-around;
     float: right;
     margin-right: 20px;
     white-space: nowrap;
@@ -57,9 +53,24 @@
 }
 
 .nav-item .active{
-    display: flex;
     color: #92f3a9;
 }
+
+.nav-item a{
+    display: inline-block;     
+    position: relative;
+    padding: 1em;     
+    margin: -1em;
+}
+
+.nav-login a{
+    display: inline-block;     
+    position: relative;
+    padding: 0.5em;     
+    margin: -0.5em;
+}
+
+/*
 
 .nav-item::after {
     content: '';
@@ -73,6 +84,7 @@
 .nav-item:hover::after {
     width: 100%;
 }
+*/
 
 .nav-login-signup, .line{
     display: none
@@ -90,46 +102,29 @@
     display: none;
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-device-width: 850px){
 
     .navbar{
         height: 60px;
-        width: 101%;
+        width: 100%;
         overflow: hidden;
     }
 
+    .logo{
+        width: auto;
+    }
+
     .navbar img{
-        width: 50%;
+        width: 160px;
         display: inline-block;     
         position: relative;    
         z-index: 1;     
         padding: 1em;     
         margin: -1em;
     }
-
-    .search-bar-main{
-        display:none;
-    }
-
-    .search-bar-small{
-        margin-top: -10px;
-        padding: 0;
-        height: 50px;
-        display: flex;
-        width: 245%;
-    }
-
-    .search-bar-small input{
-        padding: 0;
-        height: 50px;
-    }
     
     .hamburger{
-        display: inline-block;     
-        position: relative;    
-        z-index: 1;     
-        padding: 1.2em;     
-        margin: -1em;
+        float: right;
     }
 
     .nav-menu{
@@ -238,20 +233,29 @@
     }
 }
 
-@media screen and (max-width: 480px) {
-    .navbar img{
-        width: 60%;
+@media screen and (max-device-width: 500px){
+
+    .search-bar-main{
+        display:none;
+    }
+
+    .navmenu-login{
+        width: 85vh;
+    }
+
+    .search-bar-small{
+        display:flex;
+        margin-top: -10px;
+        padding: 0;
+        height: 50px;
+    }
+
+    .search-bar-small input{
+        padding: 0;
+        height: 50px;
+        width: 100%;
     }
 }
-
-@media screen and (max-width: 400px) {
-    .navbar img{
-        width: 70%;
-    }
-}
-
-
-
 
 /*
 #button-5 {

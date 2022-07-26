@@ -5,6 +5,7 @@
 }
 
 .search input{
+    width:100%;
     background-color: #ffffff;
     font-size: 1rem;
     border: 0;
@@ -31,4 +32,18 @@ input:focus{
 
 #clear-input-Btn{
     cursor: pointer;
+}
+
+
+@media screen and (max-device-width: 500px){
+    .search{
+        display: flex;
+        width:78vw;
+        margin: 0 30px;
+    }
+
+    .search-input{
+        width: 100%;
+    }
+
 }

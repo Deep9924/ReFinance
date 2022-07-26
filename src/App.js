@@ -14,8 +14,10 @@ import Stock from './pages/Stock/Stock';
 
 const App = () => {
 
+
   return (
     <div className="App">
+       
       <Router>
         <Navbar />
         <Routes>

@@ -5,7 +5,7 @@ const SearchResult = ({data}) => {
     
     return (
         <div className="search-result">
-        {data.slice(0, 15).map((value, key) => { return ( <div className="card"> {value.title} </div>); })}
+        {data.slice(0, 15).map((value, key) => { return ( <div className="card"> {value.Name} </div>); })}
         </div>
     )
 }

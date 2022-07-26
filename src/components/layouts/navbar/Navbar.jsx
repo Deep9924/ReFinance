@@ -4,22 +4,22 @@ import LogoImg from '../../assets/logo.png';
 import { NavLink } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import Search from '../search/Search';
-import Data from '../Data.json';
+//import Data from '../Data.json';
+import Nasdaq from '../nasdaq.json';
+
 
 const Navbar = () => {
   const [ click, setClick ] = useState(false);
   const handleClick = () => setClick(!click); 
 
-
   return (
     <>
       <div className="navbar">
-        
         <div className="logo"> 
           <NavLink onClick={handleClick => setClick(false)} exact to="/" ><img src={LogoImg} alt="ReFinanced-Logo"/></NavLink> 
         </div>
         <div className="search-bar-main">
-          <Search placeholder="Search..." data={Data}/>
+          <Search placeholder="Search..." data={Nasdaq}/>
         </div>
 
         <div className="navmenu-login">
@@ -44,7 +44,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className="search-bar-small navbar">
-        <Search placeholder="Search..." data={Data}/>
+        <Search placeholder="Search..." data={Nasdaq}/>
       </div>
       
     </>

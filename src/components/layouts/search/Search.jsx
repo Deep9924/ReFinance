@@ -7,11 +7,13 @@ const Search = ({ placeholder, data}) => {
     const [ filteredData, setfilteredData ] = useState([]);
     const [ wordEntered, setWordEntered ] = useState("");
 
+    //console.log(Nasdaq.map((value, key) => value.Name));
+    
     const handleFilter = (e) => {
       const searchWord = e.target.value;
       setWordEntered(searchWord);
       const newFilter = data.filter((value) => {
-        return value.title.toLowerCase().includes(searchWord.toLowerCase());
+        return value.Name.toLowerCase().includes(searchWord.toLowerCase());
       });
 
       searchWord === "" ? setfilteredData([]) : setfilteredData(newFilter);

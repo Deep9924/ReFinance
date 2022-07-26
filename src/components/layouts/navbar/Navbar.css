@@ -130,7 +130,7 @@
     .nav-menu{
         position: fixed;
         left: -100%;
-        top: 60px;
+        top: 50px;
         flex-direction: column;
         justify-content:left;
        /* 

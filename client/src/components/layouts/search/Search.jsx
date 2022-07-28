@@ -6,6 +6,7 @@ import SearchResult from '../search_result/SearchResult';
 const Search = ({ placeholder, data}) => {
     const [ filteredData, setfilteredData ] = useState([]);
     const [ wordEntered, setWordEntered ] = useState("");
+    const [ isShown, setIsShown ] = useState();
 
     //console.log(Nasdaq.map((value, key) => value.Name));
     
@@ -13,7 +14,7 @@ const Search = ({ placeholder, data}) => {
       const searchWord = e.target.value;
       setWordEntered(searchWord);
       const newFilter = data.filter((value) => {
-        return value.Name.toLowerCase().includes(searchWord.toLowerCase());
+        return ( (value.Symbol.toLowerCase().includes(searchWord.toLowerCase())) || value.Name.toLowerCase().includes(searchWord.toLowerCase()) );
       });
 
       searchWord === "" ? setfilteredData([]) : setfilteredData(newFilter);
@@ -24,21 +25,31 @@ const Search = ({ placeholder, data}) => {
         setWordEntered("");
     }
 
+    const hideSearchResult = event => {
+        setIsShown(isShown => false);
+    }
+
+    const showSearchResult = event => {
+        setIsShown(isShown => true);
+    }
+    
     return (
         <div className="search">
             <div className="search-input">
-                <input type="text" placeholder={placeholder} value={ wordEntered } onChange={ handleFilter }></input> 
+                <input type="text" placeholder={placeholder} value={ wordEntered } onChange={ handleFilter } onBlur={hideSearchResult} onFocus = { showSearchResult }></input> 
                 <div className="search-icon">
                     { wordEntered.length === 0 ?  
                         <AiOutlineSearch/> 
                         : 
-                        <AiOutlineClose id="clear-input-Btn" onClick={ clearBtn } /> 
+                        <AiOutlineClose id="clear-input-Btn" onClick={ clearBtn }/> 
                     }
                 </div>
             </div> 
-            { filteredData.length !== 0 && (
-                <SearchResult data={filteredData}/>
-            )}
+            <div style={{display: isShown ? '' : 'none'}}>
+                { filteredData.length !== 0 && (
+                    <SearchResult data={filteredData}/>
+                )}
+            </div>
         </div>
     )
 }

@@ -5,10 +5,11 @@ const SearchResult = ({data}) => {
     
     return (
         <div className="search-result">
-        {data.slice(0, 15).map((value, key) => { return ( <div className="card"> {value.Name} </div>); })}
+        {data.slice(0, 15).map((value, key) => { return ( <div className="card" key={key}> {value.Symbol + " | " +value.Name} </div>); })}
         </div>
     )
 }
+
 // What does slice do
 /*<div className="search-result">
 {data.map((data) => (    <p> {data.title} </p>))}

@@ -12,6 +12,12 @@ const Navbar = () => {
   const [ click, setClick ] = useState(false);
   const handleClick = () => setClick(!click); 
 
+  /*var clean = Nasdaq.filter((Nasdaq, index, self) =>
+    index === self.findIndex((t) => ( t.Symbol === Nasdaq.Symbol)));
+
+  console.log(clean);
+  console.log(Nasdaq); */
+
   return (
     <>
       <div className="navbar">

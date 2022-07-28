@@ -22,7 +22,7 @@ const Navbar = () => {
     <>
       <div className="navbar">
         <div className="logo"> 
-          <NavLink onClick={handleClick => setClick(false)} exact to="/" ><img src={LogoImg} alt="ReFinanced-Logo"/></NavLink> 
+          <NavLink onClick={handleClick => setClick(false)} end to="/" ><img src={LogoImg} alt="ReFinanced-Logo"/></NavLink> 
         </div>
         <div className="search-bar-main">
           <Search placeholder="Search..." data={Nasdaq}/>
@@ -30,17 +30,17 @@ const Navbar = () => {
 
         <div className="navmenu-login">
           <div className="nav-login">
-              <li className="nav-login-page" onClick={handleClick => setClick(false)}><NavLink exact to="/login" activeclassname="active">Log In</NavLink></li>
+              <li className="nav-login-page" onClick={handleClick => setClick(false)}><NavLink to="/login" activeclassname="active">Log In</NavLink></li>
           </div>
 
           <ul className={click ? "nav-menu active" : "nav-menu"}> 
             <div className="nav-login-signup"> 
               <div className="nav-login-small" onClick={handleClick}><NavLink to="/login">Sign in</NavLink></div>
             </div>
-            <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink exact to="/" activeclassname="active" >Home</NavLink></li>
-            <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink exact to="/contact" activeclassname="active">Contact</NavLink></li>
-            <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink exact to="/favourites" activeclassname="active">Favourites</NavLink></li>
-            <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink exact to="/stock" activeclassname="active">Stock</NavLink></li>
+            <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink end to="/" activeclassname="active" >Home</NavLink></li>
+            <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink to="/contact" activeclassname="active">Contact</NavLink></li>
+            <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink to="/favourites" activeclassname="active">Favourites</NavLink></li>
+            <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink to="/stock" activeclassname="active">Stock</NavLink></li>
             <hr className="line"></hr>
           </ul> 
     

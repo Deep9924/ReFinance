@@ -6,9 +6,7 @@ import SearchResult from '../search_result/SearchResult';
 const Search = ({ placeholder, data}) => {
     const [ filteredData, setfilteredData ] = useState([]);
     const [ wordEntered, setWordEntered ] = useState("");
-    const [ isShown, setIsShown ] = useState();
-
-    //console.log(Nasdaq.map((value, key) => value.Name));
+    //const [ isShown, setIsShown ] = useState();
     
     const handleFilter = (e) => {
       const searchWord = e.target.value;
@@ -24,7 +22,7 @@ const Search = ({ placeholder, data}) => {
         setfilteredData([]);
         setWordEntered("");
     }
-
+    /*
     const hideSearchResult = event => {
         setIsShown(isShown => false);
     }
@@ -32,11 +30,11 @@ const Search = ({ placeholder, data}) => {
     const showSearchResult = event => {
         setIsShown(isShown => true);
     }
-    
+    */ 
     return (
         <div className="search">
             <div className="search-input">
-                <input type="text" placeholder={placeholder} value={ wordEntered } onChange={ handleFilter } onBlur={hideSearchResult} onFocus = { showSearchResult }></input> 
+                <input type="text" placeholder={placeholder} value={ wordEntered } onChange={ handleFilter } ></input> 
                 <div className="search-icon">
                     { wordEntered.length === 0 ?  
                         <AiOutlineSearch/> 

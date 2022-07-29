@@ -27,7 +27,7 @@ const App = () => {
           <Route path="/stock" element={<Stock/>} />
         </Routes>
       </Router>
-      
+
     </div>
   );
 }

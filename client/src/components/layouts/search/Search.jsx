@@ -43,7 +43,8 @@ const Search = ({ placeholder, data}) => {
                     }
                 </div>
             </div> 
-            <div style={{display: isShown ? '' : 'none'}}>
+            <div > {//style={{display: isShown ? '' : 'none'}}
+            }
                 { filteredData.length !== 0 && (
                     <SearchResult data={filteredData}/>
                 )}

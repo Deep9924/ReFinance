@@ -34,7 +34,6 @@ input:focus{
     cursor: pointer;
 }
 
-
 @media screen and (max-device-width: 500px){
     .search{
         display: flex;

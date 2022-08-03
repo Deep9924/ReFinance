@@ -6,13 +6,14 @@ import SearchResult from '../search_result/SearchResult';
 const Search = ({ placeholder, data}) => {
     const [ filteredData, setfilteredData ] = useState([]);
     const [ wordEntered, setWordEntered ] = useState("");
-    //const [ isShown, setIsShown ] = useState();
     
     const handleFilter = (e) => {
       const searchWord = e.target.value;
       setWordEntered(searchWord);
       const newFilter = data.filter((value) => {
-        return ( (value.Symbol.toLowerCase().includes(searchWord.toLowerCase())) || value.Name.toLowerCase().includes(searchWord.toLowerCase()) );
+        const regex = new RegExp(`^${searchWord}`, 'gi');
+        return value.Symbol.match(regex) || value.Name.match(regex);
+        // return ( (value.Symbol.toLowerCase().includes(searchWord.toLowerCase())) || value.Name.toLowerCase().includes(searchWord.toLowerCase()) );
       });
 
       searchWord === "" ? setfilteredData([]) : setfilteredData(newFilter);
@@ -22,15 +23,7 @@ const Search = ({ placeholder, data}) => {
         setfilteredData([]);
         setWordEntered("");
     }
-    /*
-    const hideSearchResult = event => {
-        setIsShown(isShown => false);
-    }
 
-    const showSearchResult = event => {
-        setIsShown(isShown => true);
-    }
-    */ 
     return (
         <div className="search">
             <div className="search-input">
@@ -43,12 +36,9 @@ const Search = ({ placeholder, data}) => {
                     }
                 </div>
             </div> 
-            <div > {//style={{display: isShown ? '' : 'none'}}
-            }
-                { filteredData.length !== 0 && (
-                    <SearchResult data={filteredData}/>
+            { filteredData.length !== 0 && (
+                <SearchResult data={filteredData}/>
                 )}
-            </div>
         </div>
     )
 }

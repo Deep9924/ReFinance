@@ -4,7 +4,7 @@ import { AiOutlineSearch, AiOutlineClose } from 'react-icons/ai';
 import SearchResult from '../search_result/SearchResult';
 import axios from 'axios';
 //   "proxy": "http://localhost:5000",
-const Search = ({ placeholder, data}) => {
+const Search = ({ placeholder}) => {
     const [ filteredData, setfilteredData ] = useState([]);
     const [ wordEntered, setWordEntered ] = useState("");
     const [searchData, setSearchData ] = useState([]);

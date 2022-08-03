@@ -2,10 +2,10 @@ const express = require("express");
 const path = require("path");
 //const path = require('./nasdaqD.json');
 const cors = require('cors');
-
 const app = express();
-const port = process.env.PORT || "5000";
 app.use(cors())
+const port = process.env.PORT || "5000";
+
 
 app.get("/", (req, res) => {
     res.status(200).send("WHATABYTE: Food For Devs");

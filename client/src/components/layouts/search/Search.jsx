@@ -1,16 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Search.css';
 import { AiOutlineSearch, AiOutlineClose } from 'react-icons/ai';
 import SearchResult from '../search_result/SearchResult';
+import axios from 'axios';
 
 const Search = ({ placeholder, data}) => {
     const [ filteredData, setfilteredData ] = useState([]);
     const [ wordEntered, setWordEntered ] = useState("");
+    const [searchData, setSearchData ] = useState([]);
+
+    useEffect(() => {
+        axios.get('/search')
+            .then (res =>
+                setSearchData(res.data))
+            .catch(err => 
+                console.log(err))
+    }, [])
     
     const handleFilter = (e) => {
       const searchWord = e.target.value;
       setWordEntered(searchWord);
-      const newFilter = data.filter((value) => {
+      const newFilter = searchData.filter((value) => {
         const regex = new RegExp(`^${searchWord}`, 'gi');
         return value.Symbol.match(regex) || value.Name.match(regex);
         // return ( (value.Symbol.toLowerCase().includes(searchWord.toLowerCase())) || value.Name.toLowerCase().includes(searchWord.toLowerCase()) );

@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import Search from '../search/Search';
 //import Data from '../Data.json';
-import Nasdaq from '../nasdaq.json';
+//import Nasdaq from '../nasdaq.json';
 
 
 const Navbar = () => {
@@ -25,7 +25,9 @@ const Navbar = () => {
           <NavLink onClick={handleClick => setClick(false)} end to="/" ><img src={LogoImg} alt="ReFinanced-Logo"/></NavLink> 
         </div>
         <div className="search-bar-main">
-          <Search placeholder="Search..." data={Nasdaq}/>
+          <Search placeholder="Search..." />{
+            // data={Nasdaq}
+          }
         </div>
 
         <div className="navmenu-login">
@@ -50,7 +52,9 @@ const Navbar = () => {
         </div>
       </div>
       <div className="search-bar-small navbar">
-        <Search placeholder="Search..." data={Nasdaq}/>
+        <Search placeholder="Search..." /> {
+          //data={Nasdaq}
+        }
       </div>
       
     </>

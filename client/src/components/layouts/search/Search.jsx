@@ -3,14 +3,14 @@ import './Search.css';
 import { AiOutlineSearch, AiOutlineClose } from 'react-icons/ai';
 import SearchResult from '../search_result/SearchResult';
 import axios from 'axios';
-
+//   "proxy": "http://localhost:5000",
 const Search = ({ placeholder, data}) => {
     const [ filteredData, setfilteredData ] = useState([]);
     const [ wordEntered, setWordEntered ] = useState("");
     const [searchData, setSearchData ] = useState([]);
-
+    
     useEffect(() => {
-        axios.get('/search')
+        axios.get(process.env.REACT_APP_LOCAL + 'search')
             .then (res =>
                 setSearchData(res.data))
             .catch(err => 

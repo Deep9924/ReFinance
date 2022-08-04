@@ -2,6 +2,7 @@ import './App.css';
 import {React} from 'react'; //, useState
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Navbar from './components/layouts/navbar';
+import Index_Scroll from './components/layouts/index_scroll/Index_Scroll';
 import { Contact, Favourites, Home, Stock } from './pages';
 
 /*
@@ -20,12 +21,15 @@ const App = () => {
        
       <Router>
         <Navbar />
+        <Index_Scroll />
+
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/contact" element={<Contact/>} />
           <Route path="/favourites" element={<Favourites/>} />
           <Route path="/stock" element={<Stock/>} />
         </Routes>
+
       </Router>
 
     </div>

@@ -16,11 +16,13 @@
     position: absolute;
     -ms-overflow-style: none;  /* Scrollbar hide IE and Edge */
     scrollbar-width: none;  /* Scrollbar hide Firefox */
-    
+    scroll-snap-type: y mandatory;
+    scroll-padding-top: 3px;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox 
-scroll-snap-type: y;
+border: 1px solid black;
+border-bottom: 1px solid grey;
 scroll-snap-align: center;
 */
 .search-result::-webkit-scrollbar{
@@ -29,13 +31,13 @@ scroll-snap-align: center;
 
 .card{
     width: 100%;
-    border: 1px solid black;
     padding: 5px;
-    
+    scroll-snap-align: start;
+    margin: 3px 0;
 }
 
 .card a{
-    color: black;
+    color: rgb(59, 57, 57);
 }
 .card:hover{
     background-color: lightgrey;

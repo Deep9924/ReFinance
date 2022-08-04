@@ -2,7 +2,7 @@
     background: #ffffff;
     width: 29.6%;
     margin-top: 6px;
-    border-radius: 3px;
+    border-radius: 5px;
     padding: 4px 5px;
     height: 150px;
     display: flex;
@@ -41,6 +41,7 @@ scroll-snap-align: center;
 }
 .card:hover{
     background-color: lightgrey;
+    border-radius: 3px;
 }
 
 @media screen and (max-width: 850px){

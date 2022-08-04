@@ -1,0 +1,103 @@
+.container{
+    background: rgb(248, 248, 248);
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 7.6rem;
+    padding: 12px;
+    gap: 1rem;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+}
+
+.child-container{
+    display: grid;
+    grid-auto-flow: column;
+    border: solid 1px lightgrey;
+    background: white;
+    border-radius: 5px;
+    font-size: 0.78rem;
+    padding: 5px;
+    scroll-snap-align: start;
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
+}
+
+.child-container:hover{
+    background: rgb(243, 243, 243);
+}
+
+.scroll-snap{
+    scroll-snap-type: inline mandatory;
+    scroll-padding-inline: 12px;
+    -ms-overflow-style: none;  /* IE and Edge */ 
+    scrollbar-width: none; /* Hide scrollbar for IE, Edge and Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera 
+
+*/
+.scroll-snap::-webkit-scrollbar {
+    display: none;
+  }
+
+.first-part{
+    text-align:left;
+}
+
+.second-part{
+    text-align:right;
+}
+
+.negative{
+    color: rgb(185, 0, 0);
+    font-weight: 500;
+}
+
+.positive{
+    color: rgb(1, 133, 1);
+    font-weight: 500;
+}
+
+.symbol{
+    font-weight: bold;
+}
+
+/*
+.container{
+    background: rgb(248, 248, 248);
+    display: flex;
+    flex-direction: row;
+    padding: 15px;
+    gap: 1rem;
+}
+
+.child-container{
+    border: solid 1px lightgrey;
+    background: white;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    padding: 5px;
+}
+
+.child-container:hover{
+    background: rgb(243, 243, 243);
+}
+
+.first-part, .second-part{
+    display: flex-end;
+    
+    padding: 0 8px; 
+}
+
+.first-part{
+    float: left;
+}
+
+.second-part{
+    float: right;
+}
+
+.symbol{
+    font-weight: bold;
+}
+*/

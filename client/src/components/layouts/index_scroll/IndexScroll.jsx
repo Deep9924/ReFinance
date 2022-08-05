@@ -2,11 +2,19 @@ import React from 'react';
 import './IndexScroll.css';
 
 const IndexScroll = () => {
+  //const link = 'https://financialmodelingprep.com/api/v3/quote/%5EGSPC,%5EDJI,%5EIXIC?apikey=' + process.env.REACT_APP_STOCK_TOKEN_INDEX;
+
   return (
+
+    
+
     <div className="container scroll-snap">
       {val.map((value, key) => { return(
-
-        <div className="child-container" key={key}>
+        <div className="child-container" key={key} onClick={() =>{
+          const link = `https://cloud.iexapis.com/stable/tops?token=${process.env.REACT_APP_STOCK_TOKEN}&symbols=${value.symbol}`;
+          //<a href= {link + value.Symbol}></a>
+          window.open(link, "_blank")
+        }}>
           <div className="first-part">
 
             <div className="symbol">

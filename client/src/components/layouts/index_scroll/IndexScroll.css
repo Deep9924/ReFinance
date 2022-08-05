@@ -12,6 +12,7 @@
 .child-container{
     display: grid;
     grid-auto-flow: column;
+    cursor: pointer;
     border: solid 1px lightgrey;
     background: white;
     border-radius: 5px;

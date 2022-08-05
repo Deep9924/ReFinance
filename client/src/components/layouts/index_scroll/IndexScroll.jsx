@@ -1,20 +1,40 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 import './IndexScroll.css';
 
 const IndexScroll = () => {
-  //const link = 'https://financialmodelingprep.com/api/v3/quote/%5EGSPC,%5EDJI,%5EIXIC?apikey=' + process.env.REACT_APP_STOCK_TOKEN_INDEX;
+  const [dat, setDat] = useState([])
+/*
+  useEffect(() => {
+    axios.get(process.env.REACT_APP_LOCAL + 'indices')
+        .then (res =>
+          setDat(res.data))
+        .catch(err => 
+            console.log(err))
+}, []);
+*/
 
+useEffect(() => {
+  axios.get(process.env.REACT_APP_LOCAL + 'index')
+      .then (res =>{
+        setDat(res.data);
+        //console.log(res.data);
+      })
+      .catch(err => 
+          console.log(err))
+}, []);
+  
   return (
 
-    
 
     <div className="container scroll-snap">
-      {val.map((value, key) => { return(
+      {dat.map((value, key) => { return(
         <div className="child-container" key={key} onClick={() =>{
-          const link = `https://cloud.iexapis.com/stable/tops?token=${process.env.REACT_APP_STOCK_TOKEN}&symbols=${value.symbol}`;
-          //<a href= {link + value.Symbol}></a>
-          window.open(link, "_blank")
-        }}>
+          console.log("Fixing");
+          //const link = `https://api.twelvedata.com/quote?symbol=${value.symbol}&apikey=${process.env.REACT_APP_STOCK_TOKEN}`;
+          //window.open(link, "_blank")
+          }}>
+
           <div className="first-part">
 
             <div className="symbol">
@@ -47,53 +67,5 @@ const IndexScroll = () => {
 
 export default IndexScroll
 
-const val = [
-  {
-    "symbol": "S&P 500",
-    "percent_change": "-0.078%",
-    "price": "4151.94",
-    "price_change": "-3.23"
-  },
-  {
-    "symbol": "Nasdaq",
-    "percent_change": "0.41%",
-    "price": "12720.58",
-    "price_change": "52.42"
-  },
-  {
-    "symbol": "Dow Jones",
-    "percent_change": "-0.26%",
-    "price": "32726.82",
-    "price_change": "-85.68"
-  },
-  {
-    "symbol": "Russel",
-    "percent_change": "-0.13%",
-    "price": "1906.46",
-    "price_change": "-2.47"
-  },
-  {
-    "symbol": "TSX",
-    "percent_change": "0.16%",
-    "price": "19577.04",
-    "price_change": "31.10"
-  },
-  {
-    "symbol": "Crude/Oil",
-    "percent_change": "1.2%",
-    "price": "10.00",
-    "price_change": "0.01"
-  },
-  {
-    "symbol": "Bitcoin",
-    "percent_change": "-0.2%",
-    "price": "4500.02",
-    "price_change": "-2.3"
-  },
-  {
-    "symbol": "Ethereum",
-    "percent_change": "0.6%",
-    "price": "450.00",
-    "price_change": "5.3"
-  }
-]
+
+

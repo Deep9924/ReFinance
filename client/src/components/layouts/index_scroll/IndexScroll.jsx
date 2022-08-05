@@ -38,7 +38,7 @@ useEffect(() => {
           <div className="first-part">
 
             <div className="symbol">
-              {value.symbol}
+              {value.name}
             </div>
 
             <div className="stock-price">

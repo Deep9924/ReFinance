@@ -34,7 +34,7 @@ app.get('/index', (req,res) => {
     res.json(val);
 })
 
-app.listen(process.env.PORT || 5000, () => {
+app.listen(port, () => {
     console.log(`Listening to requests on http://localhost:${port}`);
 });
 

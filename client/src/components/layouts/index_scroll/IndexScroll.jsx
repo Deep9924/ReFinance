@@ -15,7 +15,7 @@ const IndexScroll = () => {
 */
 
 useEffect(() => {
-  axios.get(process.env.REACT_APP_LOCAL + 'indices')
+  axios.get(process.env.REACT_APP_LOCAL + 'index')
       .then (res =>{
         setDat(res.data);
         //console.log(res.data);

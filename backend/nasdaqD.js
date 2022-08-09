@@ -1,4 +1,4 @@
-[
+module.exports = [
  {
    "Symbol": "A",
    "Name": "Agilent Technologies Inc. Common Stock",

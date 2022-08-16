@@ -43,9 +43,3 @@ app.listen(port, () => {
     console.log(`Listening to requests on http://localhost:${port}`);
 });
 
-/* 
-  app.get('/search', (req, res) => {
-      res.header("Content-Type",'application/json');
-      res.sendFile(path.join(__dirname, 'nasdaqD.json'));
-  }); 
-*/

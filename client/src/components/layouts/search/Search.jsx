@@ -43,26 +43,3 @@ const Search = ({ placeholder}) => {
 }
 
 export default Search;
-
- /*
-    const [searchData, setSearchData ] = useState([]);
-        useEffect(() => {
-            axios.get(process.env.REACT_APP_LOCAL + 'search')
-                .then (res =>
-                    setSearchData(res.data))
-                .catch(err => 
-                    console.log(err))
-        }, [])
-        
-        const handleFilter = (e) => {
-        const searchWord = e.target.value;
-        setWordEntered(searchWord);
-        const newFilter = searchData.filter((value) => {
-            const regex = new RegExp(`^${searchWord}`, 'gi');
-            return value.Symbol.match(regex) || value.Name.match(regex);
-            // return ( (value.Symbol.toLowerCase().includes(searchWord.toLowerCase())) || value.Name.toLowerCase().includes(searchWord.toLowerCase()) );
-        });
-        
-        searchWord === "" ? setfilteredData([]) : setfilteredData(newFilter);
-        }
-    */

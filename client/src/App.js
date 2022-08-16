@@ -1,5 +1,5 @@
 import './App.css';
-import React, { Suspense } from 'react'; //, useState
+import React from 'react'; //, useState
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Navbar from './components/layouts/navbar';
 import IndexScroll from './components/layouts/index_scroll/IndexScroll';
@@ -21,9 +21,7 @@ const App = () => {
       <Router>
         
         <Navbar />
-        <Suspense fallback={<h1>Loading profile...</h1>}>
-          <IndexScroll />
-        </Suspense>
+        <IndexScroll />
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/contact" element={<Contact/>} />

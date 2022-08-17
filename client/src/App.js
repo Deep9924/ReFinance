@@ -22,13 +22,14 @@ const App = () => {
         
         <Navbar />
         <IndexScroll />
-        <Routes>
-          <Route path="/" element={<Home/>} />
-          <Route path="/contact" element={<Contact/>} />
-          <Route path="/favourites" element={<Favourites/>} />
-          <Route path="/stock" element={<Stock/>} />
-        </Routes>
-
+        <div className="navigation">
+          <Routes>
+            <Route path="/" element={<Home/>} />
+            <Route path="/contact" element={<Contact/>} />
+            <Route path="/favourites" element={<Favourites/>} />
+            <Route path="/stock" element={<Stock/>} />
+          </Routes>
+        </div>
 
       </Router>
     </div>

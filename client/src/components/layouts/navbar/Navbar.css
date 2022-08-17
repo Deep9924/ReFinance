@@ -12,6 +12,7 @@
 .logo{
     float: left;
     width:15vw;
+    margin-left: 5px;
 }
 
 .search-bar-main{
@@ -240,6 +241,10 @@
         display:none;
     }
 
+    .logo{
+        margin-left: 0;
+    }
+    
     .navmenu-login{
         width: 85vh;
     }

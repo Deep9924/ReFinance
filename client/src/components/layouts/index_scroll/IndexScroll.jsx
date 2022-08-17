@@ -42,7 +42,7 @@ const IndexScroll = () => {
             </div>
 
             <div className="stock-price">
-              {value.price}
+              {value.previous_close}
             </div>
 
           </div>
@@ -53,8 +53,8 @@ const IndexScroll = () => {
               {value.percent_change}
             </div>
             
-            <div className={value.price_change < 0 ? "price-change negative" : "price-change  positive"}>
-              {value.price_change}
+            <div className={value.change < 0 ? "price-change negative" : "price-change  positive"}>
+              {value.change}
             </div>
             
           </div>

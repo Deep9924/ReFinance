@@ -7,7 +7,13 @@ const Graph = ({symbol}) => {
          <div class="parent">
   
           <div class="div1"> 
-            <h1> { symbol }</h1>
+            <h2> { Object.keys(symbol).map(key => {
+              return(
+                <div>
+                  { symbol[key].meta.symbol }
+                </div>
+              )})} 
+            </h2>
           </div>
 
   

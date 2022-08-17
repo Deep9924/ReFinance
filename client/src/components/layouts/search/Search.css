@@ -4,6 +4,13 @@
     top: 50px;
 }
 
+.search-icon:hover{
+    background-color: blue;
+}
+.search-input:hover{
+    background-color: blue;
+}
+
 .search input{
     width:100%;
     background-color: #ffffff;

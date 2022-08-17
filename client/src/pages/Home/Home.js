@@ -6,22 +6,22 @@ const Home = () => {
   var sym = "SPX";
   return (
     <>
-       <div class="parent">
+       <div className="mainweb">
 
-        <div class="div1"> 
+        <div className="graph"> 
           <Graph symbol={sym}/>
         </div>
 
-        <div class="div2"> 
+        <div className="news"> 
           <h1> HElloadas</h1>
         </div>
 
-        <div class="div3"> 
-          <h1> HEllo worldasdasdas</h1>
+        <div className="favourite"> 
+          <h1> HEllo</h1>
         </div>
         
-        <div class="div4"> 
-          <h1> HEllo worldasdasdas</h1>
+        <div className="footer"> 
+          <h1> HElloW</h1>
         </div>
 
       </div> 

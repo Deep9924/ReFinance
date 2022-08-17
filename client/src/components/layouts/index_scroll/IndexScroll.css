@@ -2,8 +2,8 @@
     background: rgb(248, 248, 248);
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: 7.6rem;
-    padding: 12px;
+    grid-auto-columns: 8.3rem;
+    padding: 10px;
     gap: 1rem;
     overflow-x: auto;
     overscroll-behavior-inline: contain;

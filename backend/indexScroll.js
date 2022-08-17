@@ -15,14 +15,14 @@ const val = [
       "symbol": "IXIC"
     },
     {
-      "name": "Dow Jones",
+      "name": "Dow Jones 30",
       "percent_change": "-0.26%",
       "previous_close": "32726.82",
       "change": "-85.68",
       "symbol": "DJIA"
     },
     {
-      "name": "Russel",
+      "name": "Russel 2000",
       "percent_change": "-0.13%",
       "previous_close": "1906.46",
       "change": "-2.47",
@@ -43,26 +43,19 @@ const val = [
       "symbol": "CL.1"
     },
     {
-      "name": "Bitcoin",
+      "name": "Bitcoin USD",
       "percent_change": "-0.2%",
       "previous_close": "4500.02",
       "change": "-2.3",
       "symbol": "BTC/USD"
     },
     {
-      "name": "Ethereum",
+      "name": "Ethereum USD",
       "percent_change": "0.6%",
       "previous_close": "450.00",
       "change": "5.3",
       "symbol": "ETH/USD"
-    },
-    {
-      "name": "Nasdaq",
-      "percent_change": "0.41%",
-      "previous_close": "12720.58",
-      "change": "52.42",
-      "symbol": "COMP"
-    },
+    }
 ]
   
 module.exports = val;

@@ -7,7 +7,7 @@ app.use(cors());
 const port = process.env.PORT || "5000";
 const data = require("./nasdaqD");
 const indexScroll = require("./indexScroll");
-const db = require('./database');
+const pool = require('./database');
 require('dotenv').config();
 require('./keep-alive');
 
@@ -41,14 +41,11 @@ app.get('/index', (req,res) => {
 })
 
 app.get('/db', (req, res) => {
- 
-  db.query("SELECT * FROM User", (err, result) =>{
-    if (err){
-      console.log(err);
-    }
-
-    res.send(result);
+  pool.query('SELECT NOW()', (err, res) => {
+    console.log(err, res)
+    pool.end()
   });
+  
 });
 
 app.listen(port, () => {

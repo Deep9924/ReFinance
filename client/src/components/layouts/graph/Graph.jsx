@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ("./Graph.css");
 
 const Graph = ({symbol}) => {
+  // , { useState }
   // const [ xvalue, setXvalue ] = useState([]);
   // const [ yvalue, setYvalue ] = useState([]);
 

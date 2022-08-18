@@ -5,9 +5,8 @@ import Graph from "../../components/layouts/graph/Graph";
 const Home = () => {
   
   return (
-    <>
-       <div className="mainweb">
-
+    <div className="testing">
+      <div className="mainweb">
         <div className="graph"> 
           <Graph symbol={sym}/>
         </div>
@@ -25,7 +24,7 @@ const Home = () => {
         </div>
 
       </div> 
-    </>
+    </div>
   );}
   
 export default Home;

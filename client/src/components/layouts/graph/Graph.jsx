@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ("./Graph.css");
 
 const Graph = ({symbol}) => {
+  const [ xvalue, setXvalue ] = useState([]);
+  const [ yvalue, setYvalue ] = useState([]);
+
+  //setTheArray(oldArray => [...oldArray, newElement]); to add values to the old array
     return (
       <>
         {console.log(symb)}

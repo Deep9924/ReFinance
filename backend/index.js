@@ -41,7 +41,11 @@ app.get('/index', (req,res) => {
 })
 
 app.get('/db', (req, res) => {
-  console.log('Its working')
+  db.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+  });
+
   db.query("SELECT * FROM User", (err, result) =>{
     if (err){
       console.log(err);

@@ -7,7 +7,7 @@ app.use(cors());
 const port = process.env.PORT || "5000";
 const data = require("./nasdaqD");
 const indexScroll = require("./indexScroll");
-const pool = require('./database');
+//const pool = require('./database');
 require('dotenv').config();
 require('./keep-alive');
 
@@ -39,7 +39,7 @@ app.get('/indices', (req, res) => {
 app.get('/index', (req,res) => {
     res.json(indexScroll);
 })
-
+/*
 app.get('/db', (req, res) => {
   pool.query('SELECT NOW()', (err, res) => {
     console.log(err, res)
@@ -47,7 +47,7 @@ app.get('/db', (req, res) => {
   });
   
 });
-
+*/
 app.listen(port, () => {
     console.log(`Listening to requests on http://localhost:${port}`);
 });

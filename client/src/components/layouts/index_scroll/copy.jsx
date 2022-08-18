@@ -41,7 +41,7 @@ const IndexScroll = () => {
             </div>
 
             <div className="stock-price">
-              {dat[key].previous_close}
+              {dat[key].open}
             </div>
 
           </div>

@@ -3,56 +3,56 @@ const val = [
     {
       "name": "S&P 500",
       "percent_change": "-0.08%",
-      "previous_close": "4151.94",
+      "open": "4151.94",
       "change": "-3.23",
       "symbol": "SPX"
     },
     {
       "name": "Nasdaq",
       "percent_change": "0.49%",
-      "previous_close": "12720.58",
+      "open": "12720.58",
       "change": "52.42",
       "symbol": "IXIC"
     },
     {
       "name": "Dow Jones 30",
       "percent_change": "-0.26%",
-      "previous_close": "32726.82",
+      "open": "32726.82",
       "change": "-85.68",
       "symbol": "DJIA"
     },
     {
       "name": "Russel 2000",
       "percent_change": "-0.13%",
-      "previous_close": "1906.46",
+      "open": "1906.46",
       "change": "-2.47",
       "symbol": "RUT"
     },
     {
       "name": "TSX",
       "percent_change": "0.16%",
-      "previous_close": "19577.04",
+      "open": "19577.04",
       "change": "31.10",
       "symbol": "TSX"
     },
     {
       "name": "Crude/Oil",
       "percent_change": "1.2%",
-      "previous_close": "10.00",
+      "open": "10.00",
       "change": "0.01",
       "symbol": "CL.1"
     },
     {
       "name": "Bitcoin USD",
       "percent_change": "-0.2%",
-      "previous_close": "4500.02",
+      "open": "4500.02",
       "change": "-2.3",
       "symbol": "BTC/USD"
     },
     {
       "name": "Ethereum USD",
       "percent_change": "0.6%",
-      "previous_close": "450.00",
+      "open": "450.00",
       "change": "5.3",
       "symbol": "ETH/USD"
     }

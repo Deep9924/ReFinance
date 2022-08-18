@@ -26,8 +26,8 @@ const IndexScroll = () => {
 
   return (
 
-
-    <div className="container scroll-snap">
+<div className="index-parent scroll-snap">
+    <div className="container">
       {dat.map((value, key) => { return(
         <div className="child-container" key={key} onClick={() =>{
           console.log("Fixing");
@@ -42,7 +42,7 @@ const IndexScroll = () => {
             </div>
 
             <div className="stock-price">
-              {value.previous_close}
+              {value.open}
             </div>
 
           </div>
@@ -59,9 +59,10 @@ const IndexScroll = () => {
             
           </div>
         </div>
+        
       )})}
         
-    </div>
+    </div></div>
   )
 }
 

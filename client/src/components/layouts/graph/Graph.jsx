@@ -1,7 +1,21 @@
 import React from 'react';
+import { Line } from 'react-chartjs-2';
 import ("./Graph.css");
 
+
 const Graph = ({symbol}) => {
+  const labels = Utils.months({count: 7});
+  
+  const data = {
+  labels: labels,
+  datasets: [{
+    label: 'My First Dataset',
+    data: [65, 59, 80, 81, 56, 55, 40],
+    fill: false,
+    borderColor: 'rgb(75, 192, 192)',
+    tension: 0.1
+  }]
+  };
   // , { useState }
   // const [ xvalue, setXvalue ] = useState([]);
   // const [ yvalue, setYvalue ] = useState([]);
@@ -11,6 +25,7 @@ const Graph = ({symbol}) => {
   console.log ()
     return (
       <>
+      <Line data={ data }/>
         {console.log(symb)}
          <div className="parent">
   
@@ -26,7 +41,7 @@ const Graph = ({symbol}) => {
 
   
         </div> 
-      </>
+      </Line>
     );}
     
   export default Graph;

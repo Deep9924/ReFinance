@@ -25,7 +25,7 @@ const Graph = ({symbol}) => {
   console.log ()
     return (
       <>
-      <Line data={ data }/>
+      <Line data={ data } />
         {console.log(symb)}
          <div className="parent">
   
@@ -41,7 +41,7 @@ const Graph = ({symbol}) => {
 
   
         </div> 
-      </Line>
+      </>
     );}
     
   export default Graph;

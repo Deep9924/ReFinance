@@ -1,12 +1,8 @@
-.testing{
-    max-width: 1260px;
-    margin-right: auto;
-    margin-left: auto;
-}
+
 
 .mainweb {
     display: grid;
-    grid-template-columns: 0.3fr repeat(4, 1fr) 0.3fr; 
+    grid-template-columns: 0.5fr repeat(4, 1fr) 0.5fr; 
     grid-template-rows: repeat(7, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
@@ -29,6 +25,16 @@
 } 
 
 /*
+
+.testing{
+    max-width: 1260px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+
+
 .mainweb {
     display: grid;
     grid-template-columns: repeat(3, 1fr) 1fr;

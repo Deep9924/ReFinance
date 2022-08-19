@@ -5,14 +5,6 @@ import Navbar from './components/layouts/navbar';
 import IndexScroll from './components/layouts/index_scroll/IndexScroll';
 import { Contact, Favourites, Home, Stock } from './pages';
 
-/*
-import Contact from './pages/Contact/Contact';
-import Favourites from './pages/Favourites/Favourites';
-import Home from './pages/Home/Home';
-import Stock from './pages/Stock/Stock';
-*/
-
-
 const App = () => {
 
 
@@ -22,13 +14,15 @@ const App = () => {
         
         <Navbar />
         <IndexScroll />
-        <div className="navigation">
-          <Routes>
-            <Route path="/" element={<Home/>} />
-            <Route path="/contact" element={<Contact/>} />
-            <Route path="/favourites" element={<Favourites/>} />
-            <Route path="/stock" element={<Stock/>} />
-          </Routes>
+        <div className="main-body">
+          <div className="navigation">
+            <Routes>
+              <Route path="/" element={<Home/>} />
+              <Route path="/contact" element={<Contact/>} />
+              <Route path="/favourites" element={<Favourites/>} />
+              <Route path="/stock" element={<Stock/>} />
+            </Routes>
+          </div>
         </div>
 
       </Router>

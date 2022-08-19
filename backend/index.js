@@ -42,7 +42,7 @@ app.get('/index', (req,res) => {
 
 app.get('/db', (req, res) => {
  //pool.query("INSERT INTO links (url, name) VALUES('helloasd','O''Reilly Media');")
-  pool.query('SELECT	* FROM links;', (error, response) => {
+  pool.query('SELECT	* FROM stock;', (error, response) => {
     //console.log( response.rows);
     res.send(response.rows);
   })

@@ -8,7 +8,7 @@ const Home = () => {
     <div className="testing">
       <div className="mainweb">
         <div className="graph"> 
-          <Graph symbol={sym}/>
+          <Graph symbol={sym} />
         </div>
 
         <div className="news"> 

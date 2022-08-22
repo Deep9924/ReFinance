@@ -41,15 +41,20 @@ const Graph = ({ symbol }) => {
   const data = {
   labels: labels[0],
   datasets: [{
-    label: 'My First Dataset',
     data: open_Data[0], //[65, 59, 80, 81, 56, 55, 40],
     fill: false,
     borderColor: "black", // 'rgb(75, 192, 192)',
     tension: 0.5,
     pointRadius: 0.8,
     borderWidth: 2
-    
-  }]
+  }],
+  options: {
+    plugins:{
+     legend: {
+      display: false
+     }
+    }
+   }
   };
 
     return (

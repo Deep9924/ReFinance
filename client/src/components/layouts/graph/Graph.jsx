@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Chart from 'chart.js/auto';
 import { Line } from 'react-chartjs-2';
+import axios from 'axios';
 import ("./Graph.css");
 window.Chart = Chart
 
@@ -51,21 +52,6 @@ const Graph = ({ symbol }) => {
   }]
   };
 
-  // , { useState }
-  // const [ xvalue, setXvalue ] = useState([]);
-  // const [ yvalue, setYvalue ] = useState([]);
-
-  //setTheArray(oldArray => [...oldArray, newElement]); 
-  // to add values to the old array                         {console.log(symb.map)}
-  /* console.log (Object.keys(symb).map(key => {
-    return(
-
-       symbol[key].values.map(val => {
-        return (
-          val.open
-        )})
-
-    )})) */
     return (
       <>
       
@@ -90,6 +76,22 @@ const Graph = ({ symbol }) => {
 
 
   
+  // , { useState }
+  // const [ xvalue, setXvalue ] = useState([]);
+  // const [ yvalue, setYvalue ] = useState([]);
+
+  //setTheArray(oldArray => [...oldArray, newElement]); 
+  // to add values to the old array                         {console.log(symb.map)}
+  /* console.log (Object.keys(symb).map(key => {
+    return(
+
+       symbol[key].values.map(val => {
+        return (
+          val.open
+        )})
+
+    )})) */
+    
 
 
     

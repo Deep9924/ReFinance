@@ -1,12 +1,13 @@
-const express = require("express");
-// const path = require("path");
-const axios = require("axios");
+const express = require('express');
+// const path = require('path');
+const axios = require('axios');
 const cors = require('cors');
 const app = express();
 app.use(cors());
-const port = process.env.PORT || "5000";
-const data = require("./nasdaqD");
-const indexScroll = require("./indexScroll");
+const port = process.env.PORT || '5000';
+const data = require('./nasdaqD');
+const indexScroll = require('./indexScroll');
+const graph_data = require('./graph_data');
 const pool = require('./database');
 require('dotenv').config();
 require('./keep-alive');
@@ -38,6 +39,10 @@ app.get('/indices', (req, res) => {
 
 app.get('/index', (req,res) => {
     res.json(indexScroll);
+})
+
+app.get('/graph', (req,res) => {
+  res.json(graph_data);
 })
 
 app.get('/db', (req, res) => {

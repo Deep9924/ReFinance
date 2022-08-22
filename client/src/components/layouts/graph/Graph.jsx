@@ -8,7 +8,7 @@ const Graph = ({ symbol }) => {
   const [dat, setDat] = useState([])
 
   useEffect(() => {
-    axios.get(process.env.REACT_APP_LOCAL + 'index')
+    axios.get(process.env.REACT_APP_LOCAL + 'graph')
         .then (res =>{
           setDat(res.data);
           //console.log(res.data);

@@ -1,22 +1,24 @@
 import React from 'react';
 import "./Home.css";
 import Graph from "../../components/layouts/graph/Graph";
+import News from "../../components/layouts/news/News";
+import Favourites from "../../components/layouts/favourites/Favourites";
 
 const Home = () => {
   
   return (
-    <div className="testing">
+    <div>
       <div className="mainweb">
         <div className="graph"> 
           <Graph symbol={sym} />
         </div>
 
         <div className="news"> 
-          <h1> HElloadas</h1>
+          <News />
         </div>
 
         <div className="favourite"> 
-          <h1> HEllo</h1>
+          <Favourites />
         </div>
         
         <div className="footer"> 

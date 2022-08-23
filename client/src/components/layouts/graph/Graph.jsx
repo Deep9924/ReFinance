@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import Chart from 'chart.js/auto';
 import { Line } from 'react-chartjs-2';
 import axios from 'axios';
-import ("./Graph.css");
+import ('./Graph.css');
 window.Chart = Chart
 
 const Graph = ({ symbol }) => {
   const [dat, setDat] = useState([]);
- 
+  
+
   useEffect(() => {
     axios.get(process.env.REACT_APP_LOCAL + 'SPX')
         .then (res =>{

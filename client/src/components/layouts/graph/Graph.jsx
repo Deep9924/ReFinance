@@ -6,8 +6,7 @@ import ('./Graph.css');
 window.Chart = Chart
 
 const Graph = ({ symbol }) => {
-  const [dat, setDat] = useState([]);
-  
+  const [ dat, setDat ] = useState([]);
 
   useEffect(() => {
     axios.get(process.env.REACT_APP_LOCAL + 'SPX')

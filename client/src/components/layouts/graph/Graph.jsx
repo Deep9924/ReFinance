@@ -6,23 +6,37 @@ import ("./Graph.css");
 window.Chart = Chart
 
 const Graph = ({ symbol }) => {
-  const [dat, setDat] = useState([])
-
+  const [dat, setDat] = useState([]);
+ 
   useEffect(() => {
-    axios.get(process.env.REACT_APP_LOCAL + 'graph')
+    axios.get(process.env.REACT_APP_LOCAL + 'SPX')
         .then (res =>{
           setDat(res.data);
-          //console.log(res.data);
+          //console.log( res.data);
         })
         .catch(err => 
             console.log(err))
   }, []);
+/*   useEffect(() => {
+    // const graph_id = 'APPL';
+    const graph_id = symbol[0].meta.symbol;
+    axios.get(process.env.REACT_APP_LOCAL + `graph?id=${graph_id}`)
+        .then (res =>{
+          setDat(res.data);
+          //console.log( res.data);
+        })
+        .catch(err => 
+            console.log(err))
+  }, []);
+ */
 
   
+  /* This is for graph modifying */
+
   const labels = Object.keys(dat).map(keys => {
     return(
 
-       symbol[keys].values.map(val => {
+       symbol[keys].values.map(val => {  // Need to change symbol to dat
         return (
           val.datetime.split(" ")[1].split(":", 2).join(":")
         )})
@@ -31,7 +45,7 @@ const Graph = ({ symbol }) => {
   const open_Data = Object.keys(dat).map(key => {
     return(
 
-       symbol[key].values.map(val => {
+       symbol[key].values.map(val => {    // Need to change symbol to dat
         return (
           val.open
         )})
@@ -58,7 +72,7 @@ const Graph = ({ symbol }) => {
   labels: labels[0],
   datasets: [{
     label: 'My First Dataset',
-    data: open_Data[0], //[65, 59, 80, 81, 56, 55, 40],
+    data: open_Data[0],
     fill: false,
     borderColor: "black", // 'rgb(75, 192, 192)',
     tension: 0.5,
@@ -96,18 +110,17 @@ const Graph = ({ symbol }) => {
   // const [ xvalue, setXvalue ] = useState([]);
   // const [ yvalue, setYvalue ] = useState([]);
 
-  //setTheArray(oldArray => [...oldArray, newElement]); 
-  // to add values to the old array                         {console.log(symb.map)}
-  /* console.log (Object.keys(symb).map(key => {
-    return(
+    /* axios.get(process.env.REACT_APP_LOCAL + 'graph')
+        .then (res =>{
+          setDat(res.data);
+          //console.log(res.data);
+        })
+        .catch(err => 
+            console.log(err))
+  }, []); */
 
-       symbol[key].values.map(val => {
-        return (
-          val.open
-        )})
 
-    )})) */
-    
+
 
 
     

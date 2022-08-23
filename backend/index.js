@@ -29,8 +29,8 @@ app.get('/search',  (req, res) => {
 });
 
 app.get('/indices', (req, res) => {
-    const lin = `https://api.twelvedata.com/quote?symbol=SPX,IXIC,DJIA,RUT,COMP,BTC/USD,ETH/USD&apikey=${process.env.STOCK_TOKEN}`;
-    axios.get(lin)
+    const symbol_quote = `https://api.twelvedata.com/quote?symbol=SPX,IXIC,DJIA,RUT,COMP,BTC/USD,ETH/USD&apikey=${process.env.STOCK_TOKEN}`;
+    axios.get(symbol_quote)
         .then(response => {
             const data = response.data;
             res.json(data);
@@ -41,9 +41,25 @@ app.get('/index', (req,res) => {
     res.json(indexScroll);
 })
 
-app.get('/graph', (req,res) => {
+app.get('/graph',  async(req, res) => {
+  const graph_input = req.query.id;
+  const query = await pool.query("SELECT * FROM stock WHERE symbol_ticker = $1", [graph_input]);
+
+  //console.log(l.rows)
+  res.send(query.rows);
+});
+
+app.get('/SPX',  async(req, res) => {
+  const graph_input = 'APPL';
+  const query = await pool.query("SELECT * FROM stock WHERE symbol_ticker = $1", [graph_input]);
+
+  //console.log(l.rows)
+  res.send(query.rows);
+});
+
+/* app.get('/graph', (req,res) => {
   res.json(graph_data);
-})
+}) */
 
 app.get('/db', (req, res) => {
  //pool.query("INSERT INTO links (url, name) VALUES('helloasd','O''Reilly Media');")

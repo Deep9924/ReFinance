@@ -30,12 +30,16 @@ const Graph = ({ symbol }) => {
   }, []);
  */
 
-  
+
+  /* console.log(Object.keys(dat).map(keys => {
+    return(
+       dat[keys].symbol_name)
+    })) */
+
   /* This is for graph modifying */
 
   const labels = Object.keys(dat).map(keys => {
     return(
-
        symbol[keys].values.map(val => {  // Need to change symbol to dat
         return (
           val.datetime.split(" ")[1].split(":", 2).join(":")

@@ -57,9 +57,9 @@ app.get('/SPX',  async(req, res) => {
   res.send(query.rows);
 });
 
-/* app.get('/graph', (req,res) => {
+/* app.get('/gp', (req,res) => {
   res.json(graph_data);
-}) */
+})  */
 
 app.get('/db', (req, res) => {
  //pool.query("INSERT INTO links (url, name) VALUES('helloasd','O''Reilly Media');")

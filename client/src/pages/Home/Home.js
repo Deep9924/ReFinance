@@ -22,7 +22,8 @@ const Home = () => {
         </div>
         
         <div className="footer"> 
-          <h1> HElloW</h1>
+        
+      
         </div>
 
       </div> 

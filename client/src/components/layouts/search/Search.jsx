@@ -26,7 +26,7 @@ const Search = ({ placeholder}) => {
     return (
         <div className="search">
             <div className="search-input">
-                <input type="text" placeholder={placeholder} value={ wordEntered } onChange={ handleFilter } ></input> 
+                <input type="text" className="search_input" placeholder={placeholder} value={ wordEntered } onChange={ handleFilter } ></input> 
                 <div className="search-icon">
                     { wordEntered.length === 0 ?  
                         <AiOutlineSearch/> 

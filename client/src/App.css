@@ -34,13 +34,27 @@ h1{
   z-index: 1;
 }
 
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2.5px solid #92f3a9ad;
+  transition: 0.12s;
+}
+
 .navigation{
   margin: 15px 10px 0;
-  
 }
 
 .main-body{
   max-width: 1260px;
   margin-right: auto;
   margin-left: auto;
+}
+
+@media screen and (max-width: 850px){
+  :focus-visible {
+    outline: 2px solid #92f3a9ad;
+  }
 }

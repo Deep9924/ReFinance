@@ -36,12 +36,19 @@ const Search = ({ placeholder}) => {
     const menuRef = useRef();
 
     useEffect(() => {
-        document.addEventListener('mousedown', (e) => {
+        const handler = (e) => {
             if(!menuRef.current.contains(e.target)){
                 setfilteredData([]);
             }
-        })
-    })
+        };
+
+        document.addEventListener('mousedown', handler);
+
+        return () => {
+            document.removeEventListener('mousedown', handler);
+        }
+        
+    });
 
     return (
         <div ref={menuRef} className="search">

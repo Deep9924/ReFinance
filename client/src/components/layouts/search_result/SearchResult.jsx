@@ -1,12 +1,24 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { NavLink } from 'react-router-dom';
 import './SearchResult.css';
 
 const SearchResult = ({data}) => {
-    const link = `https://cloud.iexapis.com/stable/tops?token=${process.env.REACT_APP_STOCK_TOKEN}&symbols=`
+    const [isclicked, setIsClicked] = useState(true);
+    
+    //const link = `https://cloud.iexapis.com/stable/tops?token=${process.env.REACT_APP_STOCK_TOKEN}&symbols=`
+    const handlefilter = () => {
+        data = [];
+        setIsClicked(!isclicked);
+    }
+
     return (
-        <div className="search-result">
-        {data.slice(0, 15).map((value, key) => { return ( <div className="card" key={key}> <a href= {link + value.Symbol}> {value.Symbol + " | " +value.Name} </a> </div>); })}
-        </div>
+        <>
+            <div className={ isclicked ? "" : "notShow" }>
+                <div className="search-result">
+                {data.slice(0, 15).map((value, key) => { return ( <div className="card" key={key}> <NavLink to= {'/stock'} state={{symbol: value.Symbol}} onClick={handlefilter}> {value.Symbol + " | " + value.Name} </NavLink> </div>); })}
+                </div>
+            </div>
+        </>
     )
 }
 

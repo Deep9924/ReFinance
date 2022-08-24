@@ -29,6 +29,10 @@ scroll-snap-align: center;
     display: none;
 }
 
+.notShow{
+    display: none;
+}
+
 .card{
     width: 100%;
     padding: 5px;
@@ -52,8 +56,9 @@ scroll-snap-align: center;
 
 @media screen and (max-width: 500px){
     .search-result{
-        width: 85%;
+        width: 77.5%;
         top: 90px;
         height: 180px;
+        left: 33px;
     }
 }

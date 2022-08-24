@@ -40,9 +40,10 @@ const Navbar = () => {
               <div className="nav-login-small" onClick={handleClick}><NavLink to="/login">Sign in</NavLink></div>
             </div>
             <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink end to="/" activeclassname="active" >Home</NavLink></li>
-            <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink to="/contact" activeclassname="active">Contact</NavLink></li>
+            
             <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink to="/favourites" activeclassname="active">Favourites</NavLink></li>
-            <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink to="/stock" activeclassname="active">Stock</NavLink></li>
+            <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink to="/news" activeclassname="active">News</NavLink></li>
+            <li className="nav-item" onClick={handleClick => setClick(false)}><NavLink to="/contact" activeclassname="active">Contact</NavLink></li>
             <hr className="line"></hr>
           </ul> 
     

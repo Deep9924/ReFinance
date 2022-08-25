@@ -1,0 +1,41 @@
+User:
+ ID ( AUTO )
+1:
+ Username ( with a limit of char, Unique )
+ Email
+ Password
+
+2:
+ Upload profile pic ( have a default if not uploaded )
+ First Name
+ Last Name
+
+Stock:
+ ID (AUTO ) 
+
+Symbol
+Stock Name
+Exchange
+Currency
+Previously updated time
+Prev Close
+Day's range
+52 week range
+Market CAP
+AVG volume
+P/E Ratio
+Divident Yield
+Company score based on parameters
+About?
+Values: 5min
+News
+Parameters
+
+
+Extra:
+ CEO
+ Founded
+ Headquarters
+ Website
+ Employees
+

@@ -22,10 +22,6 @@ const SearchResult = ({data}) => {
     )
 }
 
-// What does slice do
-/*<div className="search-result">
-{data.map((data) => (    <p> {data.title} </p>))}
-            
-</div> */
+
 //{data.filter((data) => data.author.toLowerCase().includes(data)).map((data) => (    <p> {data.title} </p>))}
 export default SearchResult;

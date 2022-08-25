@@ -10,6 +10,8 @@ const Search = ({ placeholder}) => {
     const [ filteredData, setfilteredData ] = useState([]);
     const [ wordEntered, setWordEntered ] = useState("");
     const navigate = useNavigate();
+    const menuRef = useRef();
+
 
     const handleFilter = (e) => {
         const searchWord = e.target.value;
@@ -32,8 +34,6 @@ const Search = ({ placeholder}) => {
           setfilteredData([]);
         }
     }
-
-    const menuRef = useRef();
 
     useEffect(() => {
         const handler = (e) => {

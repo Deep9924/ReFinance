@@ -2,33 +2,33 @@ import React, { useState, useEffect } from 'react';
 import Chart from 'chart.js/auto';
 import { Line } from 'react-chartjs-2';
 import axios from 'axios';
-import ('./Graph.css');
+import('./Graph.css');
 window.Chart = Chart
 
 const Graph = ({ symbol }) => {
-  const [ dat, setDat ] = useState([]);
+  const [dat, setDat] = useState([]);
 
   useEffect(() => {
     axios.get(process.env.REACT_APP_LOCAL + 'SPX')
-        .then (res =>{
-          setDat(res.data);
-          //console.log( res.data);
-        })
-        .catch(err => 
-            console.log(err))
+      .then(res => {
+        setDat(res.data);
+        //console.log( res.data);
+      })
+      .catch(err =>
+        console.log(err))
   }, []);
-/*   useEffect(() => {
-    // const graph_id = 'APPL';
-    const graph_id = symbol[0].meta.symbol;
-    axios.get(process.env.REACT_APP_LOCAL + `graph?id=${graph_id}`)
-        .then (res =>{
-          setDat(res.data);
-          //console.log( res.data);
-        })
-        .catch(err => 
-            console.log(err))
-  }, []);
- */
+  /*   useEffect(() => {
+      // const graph_id = 'APPL';
+      const graph_id = symbol[0].meta.symbol;
+      axios.get(process.env.REACT_APP_LOCAL + `graph?id=${graph_id}`)
+          .then (res =>{
+            setDat(res.data);
+            //console.log( res.data);
+          })
+          .catch(err => 
+              console.log(err))
+    }, []);
+   */
 
 
   /* console.log(Object.keys(dat).map(keys => {
@@ -39,21 +39,25 @@ const Graph = ({ symbol }) => {
   /* This is for graph modifying */
 
   const labels = Object.keys(dat).map(keys => {
-    return(
-       symbol[keys].values.map(val => {  // Need to change symbol to dat
+    return (
+      symbol[keys].values.map(val => {  // Need to change symbol to dat
         return (
           val.datetime.split(" ")[1].split(":", 2).join(":")
-        )})
-    )});
+        )
+      })
+    )
+  });
 
   const open_Data = Object.keys(dat).map(key => {
-    return(
+    return (
 
-       symbol[key].values.map(val => {    // Need to change symbol to dat
+      symbol[key].values.map(val => {    // Need to change symbol to dat
         return (
           val.open
-        )})
-    )});
+        )
+      })
+    )
+  });
 
   const options = {
     layout: {
@@ -73,61 +77,63 @@ const Graph = ({ symbol }) => {
 
 
   const data = {
-  labels: labels[0],
-  datasets: [{
-    label: 'My First Dataset',
-    data: open_Data[0],
-    fill: false,
-    borderColor: "black", // 'rgb(75, 192, 192)',
-    tension: 0.5,
-    pointRadius: 0.8,
-    borderWidth: 2,
-  }],
+    labels: labels[0],
+    datasets: [{
+      label: 'My First Dataset',
+      data: open_Data[0],
+      fill: false,
+      borderColor: "black", // 'rgb(75, 192, 192)',
+      tension: 0.5,
+      pointRadius: 0.8,
+      borderWidth: 2,
+    }],
   };
 
-    return (
-      <>
-      
-         <div className="parent">
-  
-          <div className="div1"> 
-            <h2> { Object.keys(symbol).map(key => {
-              return(
-                <div key={ key }>
-                  { symbol[key].meta.symbol }
-                </div>
-              )})} 
-            </h2>
-            <div className= "graph">
-              <Line data={ data } options = { options } />
-            </div>
+  return (
+    <>
+
+      <div className="parent">
+
+        <div className="div1">
+          <h2> {Object.keys(symbol).map(key => {
+            return (
+              <div key={key}>
+                {symbol[key].meta.symbol}
+              </div>
+            )
+          })}
+          </h2>
+          <div className="graph">
+            <Line data={data} options={options} />
           </div>
-        </div> 
-      </>
-    );}
-    
-  export default Graph;
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default Graph;
 
 
-  
+
   // , { useState }
   // const [ xvalue, setXvalue ] = useState([]);
   // const [ yvalue, setYvalue ] = useState([]);
 
-    /* axios.get(process.env.REACT_APP_LOCAL + 'graph')
-        .then (res =>{
-          setDat(res.data);
-          //console.log(res.data);
-        })
-        .catch(err => 
-            console.log(err))
-  }, []); */
+/* axios.get(process.env.REACT_APP_LOCAL + 'graph')
+    .then (res =>{
+      setDat(res.data);
+      //console.log(res.data);
+    })
+    .catch(err => 
+        console.log(err))
+}, []); */
 
 
 
 
 
-    
+
 /* 
 
 import React from 'react';

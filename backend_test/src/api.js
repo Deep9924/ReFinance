@@ -7,7 +7,7 @@ const cors = require("cors");
 app.use(cors());
 const data = require("./nasdaqD");
 const indexScroll = require("./indexScroll");
-const pool = require("./database");
+//const pool = require("./database");
 require("dotenv").config();
 
 
@@ -42,16 +42,16 @@ router.get("/index", (req, res) => {
   res.json(indexScroll);
 });
 
-router.get("/graph", async (req, res) => {
+/* router.get("/graph", async (req, res) => {
   const graph_input = req.query.id;
   const query = await pool.query(
     "SELECT * FROM stock WHERE symbol_ticker = $1",
     [graph_input]
   );
   res.send(query.rows);
-});
+}); */
 
-router.get("/SPX", async (req, res) => {
+/* router.get("/SPX", async (req, res) => {
   const graph_input = "APPL";
   const query = await pool.query(
     "SELECT * FROM stock WHERE symbol_ticker = $1",
@@ -65,7 +65,7 @@ router.get("/db", (req, res) => {
   pool.query("SELECT	* FROM stock;", (error, response) => {
     res.send(response.rows);
   });
-});
+}); */
 
 app.use("/.netlify/functions/api", router);
 

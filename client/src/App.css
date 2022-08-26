@@ -39,7 +39,7 @@ h1{
 }
 
 :focus-visible {
-  outline: 2.5px solid #92f3a9ad;
+  outline: 3px solid #92f3a9ad;
   transition: 0.12s;
 }
 
@@ -55,6 +55,6 @@ h1{
 
 @media screen and (max-width: 850px){
   :focus-visible {
-    outline: 2px solid #92f3a9ad;
+    outline: 2.5px solid #92f3a9ad;
   }
 }

@@ -6,9 +6,9 @@ import axios from 'axios';
 import SearchResult from '../search_result/SearchResult';
 
 
-const Search = ({ placeholder}) => {
-    const [ filteredData, setfilteredData ] = useState([]);
-    const [ wordEntered, setWordEntered ] = useState("");
+const Search = ({ placeholder }) => {
+    const [filteredData, setfilteredData] = useState([]);
+    const [wordEntered, setWordEntered] = useState("");
     const navigate = useNavigate();
     const menuRef = useRef();
 
@@ -16,11 +16,11 @@ const Search = ({ placeholder}) => {
     const handleFilter = (e) => {
         const searchWord = e.target.value;
         setWordEntered(searchWord);
-        
+
         axios.get(process.env.REACT_APP_LOCAL + `search?q=${searchWord}`)
-            .then ((value) =>{
+            .then((value) => {
                 searchWord === "" ? setfilteredData([]) : setfilteredData(value.data.q);
-        });
+            });
     }
 
     const clearBtn = () => {
@@ -29,15 +29,15 @@ const Search = ({ placeholder}) => {
     }
 
     const handleKeyPress = (e) => {
-        if(e.key === 'Enter' && filteredData[0] != null){
-          navigate("/stock", { state: {symbol: filteredData[0].Symbol} })
-          setfilteredData([]);
+        if (e.key === 'Enter' && filteredData[0] != null) {
+            navigate("/stock", { state: { symbol: filteredData[0].Symbol } })
+            setfilteredData([]);
         }
     }
 
     useEffect(() => {
         const handler = (e) => {
-            if(!menuRef.current.contains(e.target)){
+            if (!menuRef.current.contains(e.target)) {
                 setfilteredData([]);
             }
         };
@@ -47,24 +47,24 @@ const Search = ({ placeholder}) => {
         return () => {
             document.removeEventListener('mousedown', handler);
         }
-        
+
     });
 
     return (
         <div ref={menuRef} className="search">
             <div className="search-input">
-                <input type="text" className="search_input" placeholder={placeholder} value={ wordEntered } onChange={ handleFilter } onKeyPress={ handleKeyPress }></input> 
+                <input type="text" className="search_input" placeholder={placeholder} value={wordEntered} onChange={handleFilter} onKeyPress={handleKeyPress}></input>
                 <div className="search-icon">
-                    { wordEntered.length === 0 ?  
-                        <AiOutlineSearch/> 
-                        : 
-                        <AiOutlineClose id="clear-input-Btn" onClick={ clearBtn }/> 
+                    {wordEntered.length === 0 ?
+                        <AiOutlineSearch />
+                        :
+                        <AiOutlineClose id="clear-input-Btn" onClick={clearBtn} />
                     }
                 </div>
-            </div> 
-            { filteredData.length !== 0 && (
-                <SearchResult data={filteredData}/>
-                )}
+            </div>
+            {filteredData.length !== 0 && (
+                <SearchResult data={filteredData} />
+            )}
         </div>
     )
 }

@@ -32,7 +32,7 @@
     .search{
         display: flex;
         width:78vw;
-        margin: 0 30px;
+        margin:auto;
     }
 
     .search-input{

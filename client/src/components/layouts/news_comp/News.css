@@ -31,11 +31,26 @@
   margin-left: 20px;
 }
 
-.headline{
-  font-weight: 600;
-  font-size: 0.95em;
-}
-
 .summary{
   margin-top: 10px;
+}
+
+@media screen and (max-width: 600px){
+  .news_card{
+    flex-direction: column;
+    max-width: 380px;
+  }
+
+  .news_image{
+    max-width: 100%;
+  }
+
+  .headline{
+    margin-top: 10px;
+  }
+
+  .news_text{
+    margin-left: 0px;
+  }
+  
 }

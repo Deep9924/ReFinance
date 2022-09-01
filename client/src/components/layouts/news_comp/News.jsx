@@ -11,19 +11,21 @@ const NewsComp = (props) => {
       <div className="news_card" >
 
         <div className='news_image'>
-          <img src={image} alt="News" />
+          <img src={image} alt="News_Image" />
         </div>
 
         <div className='news_text'>
           <div className='headline'>
-            {headline}
+            <h3>
+              {headline}
+            </h3>
           </div>
 
           <div className='summary'>
-            {summary}
+            <p>{summary}</p>
           </div>
         </div>
-        
+
       </div>
     </a>
   )

@@ -17,11 +17,11 @@ const News = () => {
 	return (
 		<>
 			<h1>Hello News</h1>
-			<div>
-				<div className='news_container'>{news}</div>
-				<div>
+			<div className='news_body'>
+				<div className='news_favourites'>
 					<Favourites />
 				</div>
+				<div className='news_container'>{news}</div>
 			</div>
 		</>
 	);

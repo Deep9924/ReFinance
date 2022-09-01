@@ -81,7 +81,7 @@ const Graph = ({ symbol }) => {
     datasets: [{
       label: 'My First Dataset',
       data: open_Data[0],
-      fill: false,
+      fill: true,
       borderColor: "black", // 'rgb(75, 192, 192)',
       tension: 0.5,
       pointRadius: 0.8,
@@ -92,19 +92,25 @@ const Graph = ({ symbol }) => {
   return (
     <>
 
-      <div className="parent">
+      <div className="graph_parent">
 
-        <div className="div1">
-          <h2> {Object.keys(symbol).map(key => {
-            return (
-              <div key={key}>
-                {symbol[key].meta.symbol}
-              </div>
-            )
-          })}
-          </h2>
+        <h2> {Object.keys(symbol).map(key => {
+          return (
+            <div key={key}>
+              {symbol[key].meta.symbol}
+            </div>
+          )
+        })}
+        </h2>
+
+        <div className='testing_this'>
           <div className="graph">
             <Line data={data} options={options} />
+          </div>
+
+          <div className='graph_details_container'>
+            <h4>HEllo THIS IS WHO I AM TESTING</h4>
+            
           </div>
         </div>
       </div>

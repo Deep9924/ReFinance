@@ -5,11 +5,13 @@ import NewsComp from "../../components/layouts/news_comp/News";
 import Favourites from "../../components/layouts/favourites/Favourites";
 import sym from "../../components/layouts/graph/interval";
 import company_news from "../../components/layouts/news_comp/company-news";
+import { useDocumentTitle } from "../../components/layouts/title/Title";
 
 const Home = () => {
-	const news = company_news.slice(15, 25).map((values, key) => {
+	useDocumentTitle("");
+	const news = company_news.slice(0, 25).map((values, key) => {
 		return (
-			values.image !== "" && (
+			values.summary !== "" && (
 				<div key={key}>
 					<NewsComp image={values.image} headline={values.headline} summary={values.summary} url={values.url} />
 				</div>
@@ -18,19 +20,15 @@ const Home = () => {
 	});
 
 	return (
-		<div>
+		<div className="main_test">
 			<div className='mainweb'>
-				<div className='graph'>
-					<Graph symbol={sym} />
-				</div>
-
+						<div className='home_graph'>
+							<Graph symbol={sym} />
+						</div>
+					<div className='favourite'>
+						<Favourites />
+					</div>
 				<div className='news'>{news}</div>
-
-				<div className='favourite'>
-					<Favourites />
-				</div>
-
-				<div className='footer'></div>
 			</div>
 		</div>
 	);

@@ -10,8 +10,8 @@ const NewsComp = (props) => {
     <a href={url} target="_blank" rel="noopener noreferrer">
       <div className="news_card" >
 
-        <div className='news_image'>
-          <img src={image} alt="News_Image" />
+        <div className={image === "" ? '' : 'news_image'}>
+          <img src={image} alt="" />
         </div>
 
         <div className='news_text'>

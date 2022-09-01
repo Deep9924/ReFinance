@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
+import { useDocumentTitle } from "../../components/layouts/title/Title";
 
 const Login = () => {
-  return (
-    <div>Login</div>
-  )
-}
+	useDocumentTitle("- Login");
+	return <div>Login</div>;
+};
 
 export default Login;

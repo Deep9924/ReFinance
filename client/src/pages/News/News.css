@@ -1,0 +1,15 @@
+.news_container{
+  position: relative;
+  width: 1000px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+
+@media (max-width: 991px) {
+  .news_container{
+    flex-direction: column;
+  }
+}

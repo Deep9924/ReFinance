@@ -18,8 +18,8 @@ li{
 }
 
 a{
-  text-decoration: none;
-  color: #F8F8F8;
+  text-decoration: none !important;
+  color: #333;
 }
 
 body{

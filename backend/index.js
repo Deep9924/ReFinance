@@ -28,6 +28,17 @@ app.get('/search',  (req, res) => {
   res.send({q: newFilter.slice(0, 10)});
 });
 
+app.get('/my', (req, res) => {
+  const link = 'https://finnhub.io/api/v1/company-news?symbol=AAPL&from=2022-08-01&to=2022-08-31&token=cc7sokqad3i03farbm4g';
+  //const symbol_quote = `https://api.twelvedata.com/quote?symbol=SPX,IXIC,DJIA,RUT,COMP,BTC/USD,ETH/USD&apikey=${process.env.STOCK_TOKEN}`;
+  axios.get(link)
+      .then(response => {
+          const data = response.data;
+          res.json(data);
+      }).catch(err => console.log(err));
+})
+
+
 app.get('/indices', (req, res) => {
     const symbol_quote = `https://api.twelvedata.com/quote?symbol=SPX,IXIC,DJIA,RUT,COMP,BTC/USD,ETH/USD&apikey=${process.env.STOCK_TOKEN}`;
     axios.get(symbol_quote)
@@ -56,6 +67,51 @@ app.get('/SPX',  async(req, res) => {
   //console.log(l.rows)
   res.send(query.rows);
 });
+
+app.get('/SPXA',  async(req, res) => {
+/*   const graph_input = 'APPL';
+  const query = await pool.query("SELECT * FROM stock WHERE symbol_ticker = $1", [graph_input]);
+ */
+  //console.log(l.rows)
+  //res.send(query.rows);
+
+  const symbol_quote = `https://api.twelvedata.com/complex_data?apikey=${process.env.STOCK_TOKEN}`;
+  const head = {
+    "Content-Type": "application/json"
+  };
+  const data = {
+    "symbols": [
+        "AAPL"
+    ],
+    "intervals": [
+        "5min",
+        "1day"
+    ],
+    "outputsize": 25,
+    "methods": [
+        "time_series",
+        {
+            "name": "ema",
+            "time_period": 12
+        },
+        "quote",
+        {
+            "name": "adx",
+            "order": "ASC"
+        }
+    ]
+};
+
+  axios.post(symbol_quote, data, head)
+      .then(response => {
+        /* console.log("this is response: ", response);
+        const data = response.data; */
+        res.json(response);
+        console.log("this is data: ", response.data);
+      }).catch(err => console.log(err));
+
+});
+
 
 /* app.get('/gp', (req,res) => {
   res.json(graph_data);

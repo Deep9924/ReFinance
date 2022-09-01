@@ -1,21 +1,22 @@
 import React from 'react';
-import { useLocation, Navigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Graph from "../../components/layouts/graph/Graph";
 import sym from "../../components/layouts/graph/interval";
+import NotFound from '../../components/layouts/notFound/NotFound';
 import './Stock.css';
 
 const Stock = () => {
-  const location = useLocation();
+  const {state} = useLocation();
   
-  if (location.state == null){
+  if (state == null){
     return (
-    <Navigate replace to='/' />
+    <NotFound />
   )}
 
   return (
     <div>
       <h1>Hello Stock</h1>
-      <p>{location.state.symbol}</p>
+      <p>{state.symbol}</p>
       <Graph symbol={sym} />
     </div>
   );

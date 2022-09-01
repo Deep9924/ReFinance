@@ -1,7 +1,7 @@
 import "./App.css";
 import React from "react"; //, useState
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Contact, Favourites, Home, News, Stock } from "./pages";
+import { Contact, Favourites, Home, News, Stock, Login } from "./pages";
 import Navbar from "./components/layouts/navbar";
 import IndexScroll from "./components/layouts/index_scroll/IndexScroll";
 import Footer from "./components/layouts/footer/Footer";
@@ -21,6 +21,7 @@ const App = () => {
 							<Route path='/news' element={<News />} />
 							<Route path='/contact' element={<Contact />} />
 							<Route path='/stock' element={<Stock />} />
+							<Route path='/login' element={<Login />} />
 							<Route path='/*' element={<NotFound />} />
 						</Routes>
 					</div>

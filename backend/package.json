@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index",
     "dev": "nodemon index",
-    "both": "concurrently \"npm run dev\" \"cd ../client && npm run dev\""
+    "both": "concurrently \"npm run dev\" \"cd ../client && npm run start\"",
+    "bothdev": "concurrently \"npm run dev\" \"cd ../client && npm run dev\""
   },
   "keywords": [],
   "author": "",

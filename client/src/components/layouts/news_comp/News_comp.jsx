@@ -1,5 +1,5 @@
 import React from 'react';
-import './News.css';
+import './News_comp.css';
 //import company_news from './company-news';
 
 const NewsComp = (props) => {

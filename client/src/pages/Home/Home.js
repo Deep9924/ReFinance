@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.css";
 import Graph from "../../components/layouts/graph/Graph";
-import NewsComp from "../../components/layouts/news_comp/News";
+import NewsComp from "../../components/layouts/news_comp/News_comp";
 import Favourites from "../../components/layouts/favourites/Favourites";
 import sym from "../../components/layouts/graph/interval";
 import company_news from "../../components/layouts/news_comp/company-news";
@@ -9,7 +9,7 @@ import { useDocumentTitle } from "../../components/layouts/title/Title";
 
 const Home = () => {
 	useDocumentTitle("");
-	const news = company_news.slice(0, 25).map((values, key) => {
+	const news = company_news.slice(0, 5).map((values, key) => {
 		return (
 			values.summary !== "" && (
 				<div key={key}>
@@ -30,7 +30,7 @@ const Home = () => {
 					</div>
 				<div className='news'>{news}</div>
 			</div>
-		</div>
+		</div> 
 	);
 };
 

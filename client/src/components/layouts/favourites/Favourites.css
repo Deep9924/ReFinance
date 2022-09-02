@@ -16,5 +16,6 @@
     display: flex;
     flex-direction: row;
     overflow-x: scroll;
+    padding: 15px 0;
   }
 }

@@ -75,7 +75,6 @@ const Graph = ({ symbol }) => {
     },
   };
 
-
   const data = {
     labels: labels[0],
     datasets: [{
@@ -110,7 +109,7 @@ const Graph = ({ symbol }) => {
 
           <div className='graph_details_container'>
             <h4>HEllo THIS IS WHO I AM TESTING</h4>
-            
+
           </div>
         </div>
       </div>

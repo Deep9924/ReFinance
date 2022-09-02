@@ -1,5 +1,6 @@
 import React from "react";
 import { useDocumentTitle } from "../../components/layouts/title/Title";
+import "./Favourites.css";
 
 const Favourites = () => {
 	useDocumentTitle("- Favourites");

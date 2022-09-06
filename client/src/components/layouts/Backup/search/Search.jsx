@@ -8,7 +8,6 @@ import SearchResult from '../search_result/SearchResult';
 
 const Search = ({ placeholder }) => {
     const [filteredData, setfilteredData] = useState([]);
-    const [filteredDataSaved, setfilteredDataSaved] = useState([]);
     const [wordEntered, setWordEntered] = useState("");
     const navigate = useNavigate();
     const menuRef = useRef();
@@ -20,38 +19,26 @@ const Search = ({ placeholder }) => {
 
         axios.get(process.env.REACT_APP_LOCAL + `search?q=${searchWord}`)
             .then((value) => {
-                searchWord === "" ? setfilteredData([]) : addData(value.data.q);
+                searchWord === "" ? setfilteredData([]) : setfilteredData(value.data.q);
             });
     }
-
-    const addData = (toAdd) => {
-        setfilteredData(toAdd);
-        setfilteredDataSaved(toAdd);
-    };
 
     const clearBtn = () => {
         setfilteredData([]);
         setWordEntered("");
-    };
+    }
 
     const handleKeyPress = (e) => {
         if (e.key === 'Enter' && filteredData[0] != null) {
             navigate("/stock", { state: { symbol: filteredData[0].Symbol } })
             setfilteredData([]);
         }
-    };
-
-    const testing = () => {
-        setfilteredData([]);
-    };
+    }
 
     useEffect(() => {
         const handler = (e) => {
             if (!menuRef.current.contains(e.target)) {
                 setfilteredData([]);
-            }
-            else if (menuRef.current.contains(e.target) && (wordEntered !== "" && wordEntered !== null)) {
-                setfilteredData(filteredDataSaved);
             }
         };
 
@@ -76,7 +63,22 @@ const Search = ({ placeholder }) => {
                 </div>
             </div>
             {filteredData.length !== 0 && (
-                <SearchResult data={filteredData} onClick={testing} />
+                <>
+                    <SearchResult data={filteredData} />
+                    <div className={isclicked ? "" : "notShow"}>
+                        <div className="search-result">
+                            {data.slice(0, 15).map((value, key) => {
+                                return (
+                                    <div className="card" key={key}>
+                                        <NavLink to={'/stock'} state={{ symbol: value.Symbol }} onClick={handlefilter}>
+                                            {value.Symbol + " | " + value.Name}
+                                        </NavLink>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </>
             )}
         </div>
     )

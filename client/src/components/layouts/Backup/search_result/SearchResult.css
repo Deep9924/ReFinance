@@ -1,0 +1,64 @@
+.search-result{
+    background: #ffffff;
+    width: 29.6%;
+    margin-top: 6px;
+    border-radius: 5px;
+    padding: 4px 5px;
+    height: 150px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow: auto;
+    flex-direction: column;
+    z-index: 20;
+    overflow-x: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    position: absolute;
+    -ms-overflow-style: none;  /* Scrollbar hide IE and Edge */
+    scrollbar-width: none;  /* Scrollbar hide Firefox */
+    scroll-snap-type: y mandatory;
+    scroll-padding-top: 3px;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox 
+border: 1px solid black;
+border-bottom: 1px solid grey;
+scroll-snap-align: center;
+*/ 
+.search-result::-webkit-scrollbar{
+    display: none;
+}
+
+.notShow{
+    display: none;
+}
+
+.card{
+    width: 100%;
+    padding: 5px;
+    scroll-snap-align: start;
+    margin: 3px 0;
+}
+
+.card a{
+    color: rgb(59, 57, 57);
+}
+.card:hover{
+    background-color: lightgrey;
+    border-radius: 3px;
+}
+
+@media screen and (max-width: 850px){
+    .search-result{
+        width: 29%;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .search-result{
+        width: 77.5%;
+        top: 90px;
+        height: 180px;
+        left: 33px;
+    }
+}

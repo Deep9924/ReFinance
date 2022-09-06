@@ -7,71 +7,71 @@ const Favourites = () => {
       <h2>Favourites</h2>
       <div className='flexing'>
         <div className='index_scrolling'>
-          <div class="first-part-fav">
-            <div class="symbol-fav">Dow Jones 30</div>
-            <div class="stock-price-fav">32726.82</div>
+          <div className="first-part-fav">
+            <div className="symbol-fav">Dow Jones 30</div>
+            <div className="stock-price-fav">32726.82</div>
           </div>
-          <div class="second-part-fav">
-            <div class="percent-change-fav negative">-0.26%</div>
-            <div class="price-change-fav negative">-85.68</div>
-          </div>
-        </div>
-        <div className='index_scrolling'>
-          <div class="first-part-fav">
-            <div class="symbol-fav">Dow Jones 30</div>
-            <div class="stock-price-fav">32726.82</div>
-          </div>
-          <div class="second-part-fav">
-            <div class="percent-change-fav negative">-0.26%</div>
-            <div class="price-change-fav negative">-85.68</div>
+          <div className="second-part-fav">
+            <div className="percent-change-fav negative">-0.26%</div>
+            <div className="price-change-fav negative">-85.68</div>
           </div>
         </div>
         <div className='index_scrolling'>
-          <div class="first-part-fav">
-            <div class="symbol-fav">Dow Jones 30</div>
-            <div class="stock-price-fav">32726.82</div>
+          <div className="first-part-fav">
+            <div className="symbol-fav">Dow Jones 30</div>
+            <div className="stock-price-fav">32726.82</div>
           </div>
-          <div class="second-part-fav">
-            <div class="percent-change-fav negative">-0.26%</div>
-            <div class="price-change-fav negative">-85.68</div>
-          </div>
-        </div>
-        <div className='index_scrolling'>
-          <div class="first-part-fav">
-            <div class="symbol-fav">Dow Jones 30</div>
-            <div class="stock-price-fav">32726.82</div>
-          </div>
-          <div class="second-part-fav">
-            <div class="percent-change-fav negative">-0.26%</div>
-            <div class="price-change-fav negative">-85.68</div>
+          <div className="second-part-fav">
+            <div className="percent-change-fav negative">-0.26%</div>
+            <div className="price-change-fav negative">-85.68</div>
           </div>
         </div>
         <div className='index_scrolling'>
-          <div class="first-part-fav">
-            <div class="symbol-fav">Dow Jones 30</div>
-            <div class="stock-price-fav">32726.82</div>
+          <div className="first-part-fav">
+            <div className="symbol-fav">Dow Jones 30</div>
+            <div className="stock-price-fav">32726.82</div>
           </div>
-          <div class="second-part-fav">
-            <div class="percent-change-fav negative">-0.26%</div>
-            <div class="price-change-fav negative">-85.68</div>
+          <div className="second-part-fav">
+            <div className="percent-change-fav negative">-0.26%</div>
+            <div className="price-change-fav negative">-85.68</div>
+          </div>
+        </div>
+        <div className='index_scrolling'>
+          <div className="first-part-fav">
+            <div className="symbol-fav">Dow Jones 30</div>
+            <div className="stock-price-fav">32726.82</div>
+          </div>
+          <div className="second-part-fav">
+            <div className="percent-change-fav negative">-0.26%</div>
+            <div className="price-change-fav negative">-85.68</div>
+          </div>
+        </div>
+        <div className='index_scrolling'>
+          <div className="first-part-fav">
+            <div className="symbol-fav">Dow Jones 30</div>
+            <div className="stock-price-fav">32726.82</div>
+          </div>
+          <div className="second-part-fav">
+            <div className="percent-change-fav negative">-0.26%</div>
+            <div className="price-change-fav negative">-85.68</div>
           </div>
         </div> <div className='index_scrolling'>
-          <div class="first-part-fav">
-            <div class="symbol-fav">Dow Jones 30</div>
-            <div class="stock-price-fav">32726.82</div>
+          <div className="first-part-fav">
+            <div className="symbol-fav">Dow Jones 30</div>
+            <div className="stock-price-fav">32726.82</div>
           </div>
-          <div class="second-part-fav">
-            <div class="percent-change-fav negative">-0.26%</div>
-            <div class="price-change-fav negative">-85.68</div>
+          <div className="second-part-fav">
+            <div className="percent-change-fav negative">-0.26%</div>
+            <div className="price-change-fav negative">-85.68</div>
           </div>
         </div> <div className='index_scrolling'>
-          <div class="first-part-fav">
-            <div class="symbol-fav">Dow Jones 30</div>
-            <div class="stock-price-fav">32726.82</div>
+          <div className="first-part-fav">
+            <div className="symbol-fav">Dow Jones 30</div>
+            <div className="stock-price-fav">32726.82</div>
           </div>
-          <div class="second-part-fav">
-            <div class="percent-change-fav negative">-0.26%</div>
-            <div class="price-change-fav negative">-85.68</div>
+          <div className="second-part-fav">
+            <div className="percent-change-fav negative">-0.26%</div>
+            <div className="price-change-fav negative">-85.68</div>
           </div>
         </div>
       </div>
@@ -80,4 +80,4 @@ const Favourites = () => {
   );
 }
 
-export default Favourites
+export default Favourites;

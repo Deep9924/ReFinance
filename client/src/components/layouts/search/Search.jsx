@@ -27,6 +27,7 @@ const Search = ({ placeholder }) => {
     const addData = (toAdd) => {
         setfilteredData(toAdd);
         setfilteredDataSaved(toAdd);
+        //console.log(filteredData);
     };
 
     const clearBtn = () => {
@@ -41,7 +42,7 @@ const Search = ({ placeholder }) => {
         }
     };
 
-    const testing = () => {
+    const searchResultClicked = () => {
         setfilteredData([]);
     };
 
@@ -50,7 +51,7 @@ const Search = ({ placeholder }) => {
             if (!menuRef.current.contains(e.target)) {
                 setfilteredData([]);
             }
-            else if (menuRef.current.contains(e.target) && (wordEntered !== "" && wordEntered !== null)) {
+            else if (menuRef.current.contains(e.target) && wordEntered !== "") {
                 setfilteredData(filteredDataSaved);
             }
         };
@@ -76,7 +77,7 @@ const Search = ({ placeholder }) => {
                 </div>
             </div>
             {filteredData.length !== 0 && (
-                <SearchResult data={filteredData} onClick={testing} />
+                <SearchResult data={filteredData} onClick={searchResultClicked} />
             )}
         </div>
     )

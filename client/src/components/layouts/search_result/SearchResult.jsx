@@ -14,8 +14,8 @@ const SearchResult = (props) => {
             {props.data.slice(0, 15).map((value, key) => {
                 return (
                     <div className="card" key={key}>
-                        <NavLink to={'/stock'} state={{ symbol: value.Symbol }} onClick={handlefilter}>
-                            {value.Symbol + " | " + value.Name}
+                        <NavLink to={'/stock'} state={{ symbol: value.symbol }} onClick={handlefilter}>
+                            {value.symbol + " | " + value.description}
                         </NavLink>
                     </div>
                 );

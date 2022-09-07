@@ -5,22 +5,26 @@ const cors = require("cors");
 const app = express();
 app.use(cors());
 const port = process.env.PORT || "5000";
-const data = require("./nasdaqD");
+//const data = require("./nasdaqD");
 const indexScroll = require("./indexScroll");
-const graph_data = require("./graph_data");
 const pool = require("./database");
 require("dotenv").config();
 require("./keep-alive");
 const { MongoClient } = require("mongodb");
 const client = new MongoClient(process.env.DATABASE_MONGO);
 client.connect();
-const mongo_db = require("./mongo") 
+const mongo_db = require("./mongo");
 
 app.get("/", (req, res) => {
 	res.status(200).send("WHATABYTE: Food For Devs");
 });
 
-app.get("/searched", (req, res) => {
+app.get("/search", async (req, res) => {
+  let result = await mongo_db(req.query.q);
+  return res.send({ q: result });
+});
+
+/* app.get("/searched", (req, res) => {
 	const searchInput = req.query.q;
 
 	const newFilter = data.filter((value) => {
@@ -29,7 +33,7 @@ app.get("/searched", (req, res) => {
 	});
 
 	res.send({ q: newFilter.slice(0, 10) });
-});
+}); */
 
 app.get("/my", (req, res) => {
 	const link = "https://finnhub.io/api/v1/company-news?symbol=AAPL&from=2022-08-01&to=2022-08-31&token=cc7sokqad3i03farbm4g";
@@ -126,14 +130,38 @@ app.get("/db", (req, res) => {
 	});
 });
 
-app.get("/search", async (req, res) => {
-  let result = await mongo_db(req.query.q);
-  return res.send({ q: result });
-});
-
 app.listen(port, () => {
 	console.log(`Listening to requests on http://localhost:${port}`);
 });
+
+/* function fixing (str){
+	return str
+	.trim().toLowerCase()
+	.split(' ')
+	.reduce((sentence, word) => `${sentence} ${word.charAt(0).toUpperCase()}${word.substring(1)}`, '')
+	.trim();
+}
+
+app.get("/a", async (req, res) => {
+  const mapping = symb.map((values) => {
+		var hal = fixing(values.description)
+		return hal;
+	});
+
+  return res.send(mapping);
+});
+
+
+app.get("/aa", async (req, res) => {
+  const result = await mongo_test();
+	const mapping = result.map((values) => {
+		var hal = fixing(values.description)
+		return hal;
+	});
+  return res.send(mapping);
+});
+ */
+// db.Refinance_Stock.updateMany({description: ""}, {$set: {description}})
 
 /* 
   app.get("/mongo_auto", async (req, res) => {
@@ -172,60 +200,3 @@ app.listen(port, () => {
     }
   });
  */
-
-
-
-
-
-  /* 
-  
-  app.get("/search", async (req, res) => {
-	//res.send(result);
-	try {
-		if (req.query.q) {
-			let result = await client
-				.db("Refinance")
-				.collection("Refinance_Stock")
-				.aggregate([
-					{
-						$search: {
-							index: "forSearch",
-							compound: {
-								must: [
-									{
-										text: {
-											query: req.query.q,
-											path: ["symbol", "description"],
-											fuzzy: {
-												maxEdits: 1,
-                        prefixLength: 4,
-											},
-										},
-									},
-								],
-							},
-						},
-					},
-					{
-						$limit: 10,
-					},
-          {
-            $project: {
-              symbol: 1,
-              description: 1,
-            }
-          }
-				])
-				.toArray();
-        //console.log(result);
-        // score: { $meta: "searchScore"} to check the score
-			return res.send({ q: result });
-		}
-		res.send({ q: [] });
-	} catch (error) {
-		console.error(error);
-		res.send({ q: [] });
-	}
-});
-  
-  */

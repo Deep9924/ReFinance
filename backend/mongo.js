@@ -40,7 +40,6 @@ const mongo_db = async (searchData) => {
 					},
 				])
 				.toArray();
-			//console.log(result);
 			// score: { $meta: "searchScore"} to check the score
 			return result;
 		}

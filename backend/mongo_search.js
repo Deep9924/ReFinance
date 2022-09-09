@@ -6,7 +6,7 @@ require("dotenv").config();
 const mongo_db = async (searchData) => {
 	try {
 		if (searchData) {
-			let result = await client
+			const result = await client
 				.db("Refinance")
 				.collection("Refinance_Stock")
 				.aggregate([

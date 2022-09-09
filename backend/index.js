@@ -10,32 +10,40 @@ const indexScroll = require("./indexScroll");
 const pool = require("./database");
 require("dotenv").config();
 require("./keep-alive");
+
 const { MongoClient } = require("mongodb");
 const client = new MongoClient(process.env.DATABASE_MONGO);
 client.connect();
-const mongo_db = require("./mongo");
+const mongo_db = require("./mongo_search");
+const mongo_stock = require("./mongo_stock");
+
+const finnhub = require("finnhub");
+const api_key = finnhub.ApiClient.instance.authentications["api_key"];
+api_key.apiKey = "<API_key>"; // Replace this
+const finnhubClient = new finnhub.DefaultApi();
+// https://www.npmjs.com/package/finnhub
+
+app.get("/test", async (req, res) => {
+	//const sy = "AAPL";
+	const result = await mongo_stock(req.query.id, "Search");
+	console.log("result", result)
+	return res.send(result);
+	//mongo_stock("MSFT", );
+
+
+})
+
 
 app.get("/", (req, res) => {
 	res.status(200).send("WHATABYTE: Food For Devs");
 });
 
 app.get("/search", async (req, res) => {
-  let result = await mongo_db(req.query.q);
-  return res.send({ q: result });
+	const result = await mongo_db(req.query.q);
+	return res.send({ q: result });
 });
 
-/* app.get("/searched", (req, res) => {
-	const searchInput = req.query.q;
-
-	const newFilter = data.filter((value) => {
-		const regex = new RegExp(`^${searchInput}`, "gi");
-		return value.Symbol.match(regex) || value.Name.match(regex);
-	});
-
-	res.send({ q: newFilter.slice(0, 10) });
-}); */
-
-app.get("/my", (req, res) => {
+app.get("/news", (req, res) => {
 	const link = "https://finnhub.io/api/v1/company-news?symbol=AAPL&from=2022-08-01&to=2022-08-31&token=cc7sokqad3i03farbm4g";
 	//const symbol_quote = `https://api.twelvedata.com/quote?symbol=SPX,IXIC,DJIA,RUT,COMP,BTC/USD,ETH/USD&apikey=${process.env.STOCK_TOKEN}`;
 	axios
@@ -58,6 +66,7 @@ app.get("/indices", (req, res) => {
 		.catch((err) => console.log(err));
 });
 
+// Change from index to indices and add to database
 app.get("/index", (req, res) => {
 	res.json(indexScroll);
 });
@@ -118,14 +127,8 @@ app.get("/SPXA", async (req, res) => {
 		.catch((err) => console.log(err));
 });
 
-/* app.get('/gp', (req,res) => {
-  res.json(graph_data);
-})  */
-
 app.get("/db", (req, res) => {
-	//pool.query("INSERT INTO links (url, name) VALUES('helloasd','O''Reilly Media');")
 	pool.query("SELECT	* FROM stock;", (error, response) => {
-		//console.log( response.rows);
 		res.send(response.rows);
 	});
 });
@@ -134,33 +137,6 @@ app.listen(port, () => {
 	console.log(`Listening to requests on http://localhost:${port}`);
 });
 
-/* function fixing (str){
-	return str
-	.trim().toLowerCase()
-	.split(' ')
-	.reduce((sentence, word) => `${sentence} ${word.charAt(0).toUpperCase()}${word.substring(1)}`, '')
-	.trim();
-}
-
-app.get("/a", async (req, res) => {
-  const mapping = symb.map((values) => {
-		var hal = fixing(values.description)
-		return hal;
-	});
-
-  return res.send(mapping);
-});
-
-
-app.get("/aa", async (req, res) => {
-  const result = await mongo_test();
-	const mapping = result.map((values) => {
-		var hal = fixing(values.description)
-		return hal;
-	});
-  return res.send(mapping);
-});
- */
 // db.Refinance_Stock.updateMany({description: ""}, {$set: {description}})
 
 /* 
@@ -200,3 +176,15 @@ app.get("/aa", async (req, res) => {
     }
   });
  */
+
+
+	/* app.get("/searched", (req, res) => {
+	const searchInput = req.query.q;
+
+	const newFilter = data.filter((value) => {
+		const regex = new RegExp(`^${searchInput}`, "gi");
+		return value.Symbol.match(regex) || value.Name.match(regex);
+	});
+
+	res.send({ q: newFilter.slice(0, 10) });
+}); */

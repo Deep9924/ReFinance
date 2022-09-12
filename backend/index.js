@@ -11,9 +11,9 @@ const pool = require("./database");
 require("dotenv").config();
 require("./keep-alive");
 
-const { MongoClient } = require("mongodb");
+/* const { MongoClient } = require("mongodb");
 const client = new MongoClient(process.env.DATABASE_MONGO);
-client.connect();
+client.connect(); */
 const mongo_db = require("./mongo_search");
 const mongo_stock = require("./mongo_stock");
 
@@ -25,12 +25,10 @@ const finnhubClient = new finnhub.DefaultApi();
 
 app.get("/test", async (req, res) => {
 	//const sy = "AAPL";
-	const result = await mongo_stock(req.query.id, "Search");
+	const result = await mongo_stock(req.query.id);
 	console.log("result", result)
 	return res.send(result);
 	//mongo_stock("MSFT", );
-
-
 })
 
 

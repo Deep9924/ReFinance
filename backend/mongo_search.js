@@ -1,14 +1,16 @@
-const { MongoClient } = require("mongodb");
+/* const { MongoClient } = require("mongodb");
 const client = new MongoClient(process.env.DATABASE_MONGO);
 client.connect();
-require("dotenv").config();
+require("dotenv").config(); */
+
+const db = require("./mongo");
 
 const mongo_db = async (searchData) => {
 	try {
 		if (searchData) {
-			const result = await client
-				.db("Refinance")
-				.collection("Refinance_Stock")
+			const result = await db
+				/* .db("Refinance")
+				.collection("Refinance_Stock") */
 				.aggregate([
 					{
 						$search: {

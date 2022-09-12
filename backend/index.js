@@ -11,9 +11,6 @@ const pool = require("./database");
 require("dotenv").config();
 require("./keep-alive");
 
-/* const { MongoClient } = require("mongodb");
-const client = new MongoClient(process.env.DATABASE_MONGO);
-client.connect(); */
 const mongo_db = require("./mongo_search");
 const mongo_stock = require("./mongo_stock");
 
@@ -24,13 +21,9 @@ const finnhubClient = new finnhub.DefaultApi();
 // https://www.npmjs.com/package/finnhub
 
 app.get("/test", async (req, res) => {
-	//const sy = "AAPL";
 	const result = await mongo_stock(req.query.id);
-	console.log("result", result)
 	return res.send(result);
-	//mongo_stock("MSFT", );
 })
-
 
 app.get("/", (req, res) => {
 	res.status(200).send("WHATABYTE: Food For Devs");
@@ -41,7 +34,12 @@ app.get("/search", async (req, res) => {
 	return res.send({ q: result });
 });
 
-app.get("/news", (req, res) => {
+app.get("/news", async (req, res) => {
+	const result = await mongo_stock(req.query.id);
+	return res.send(result);
+});
+
+/* app.get("/news", (req, res) => {
 	const link = "https://finnhub.io/api/v1/company-news?symbol=AAPL&from=2022-08-01&to=2022-08-31&token=cc7sokqad3i03farbm4g";
 	//const symbol_quote = `https://api.twelvedata.com/quote?symbol=SPX,IXIC,DJIA,RUT,COMP,BTC/USD,ETH/USD&apikey=${process.env.STOCK_TOKEN}`;
 	axios
@@ -51,7 +49,7 @@ app.get("/news", (req, res) => {
 			res.json(data);
 		})
 		.catch((err) => console.log(err));
-});
+}); */
 
 app.get("/indices", (req, res) => {
 	const symbol_quote = `https://api.twelvedata.com/quote?symbol=SPX,IXIC,DJIA,RUT,COMP,BTC/USD,ETH/USD&apikey=${process.env.STOCK_TOKEN}`;

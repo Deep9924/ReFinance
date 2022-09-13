@@ -19,7 +19,7 @@ const News = () => {
 		.catch((err) => console.log(err));
 	// const news = company_news.slice(20, 25).map((values, key) => {
 	//console.log(newsArticles)
-	const articles = newsArticles.slice(0, 10).map((values, key) => {
+	const articles = newsArticles.map((values, key) => {
 		return (
 			values.summary !== "" && (
 				<div key={key}>

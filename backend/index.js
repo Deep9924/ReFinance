@@ -35,7 +35,7 @@ app.get("/search", async (req, res) => {
 });
 
 app.get("/news", async (req, res) => {
-	const result = await mongo_stock(req.query.id);
+	const result = await mongo_stock(req.query.id, "news");
 	return res.send(result);
 });
 

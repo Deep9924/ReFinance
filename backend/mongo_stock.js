@@ -33,8 +33,8 @@ const findDataApi = async (stockName, fieldName) => {
 			dataLink = `https://finnhub.io/api/v1/stock/candle?symbol=${stockName}&resolution=5&from=${startDates}&to=${endDates}&token=${process.env.FINHUB_API_KEY}`;
 			return await getDataApi(dataLink);
 		case "info":
-			const another = "https://finnhub.io/api/v1/stock/price-metric?symbol=AAPL&token=${process.env.FINHUB_API_KEY}";
-			const basic_financial = "https://finnhub.io/api/v1/stock/metric?symbol=AAPL&metric=all&token=${process.env.FINHUB_API_KEY}";
+			const another = `https://finnhub.io/api/v1/stock/price-metric?symbol=${stockName}&token=${process.env.FINHUB_API_KEY}`;
+			const basic_financial = `https://finnhub.io/api/v1/stock/metric?symbol=${stockName}&metric=all&token=${process.env.FINHUB_API_KEY}`;
 			dataLink = `https://finnhub.io/api/v1/quote?symbol=${stockName}&token=${process.env.FINHUB_API_KEY}`;
 			return await getDataApi(dataLink);
 		default:
@@ -88,8 +88,6 @@ const getData = async (stockName, fieldName) => {
 };
 
 const mongo_stock = async (stockName, fieldName) => {
-	fieldName = "news";
-
 	try {
 		const result = await getData(stockName, fieldName);
 		return result;

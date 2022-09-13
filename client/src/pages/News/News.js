@@ -8,19 +8,18 @@ import axios from "axios";
 
 const News = () => {
 	useDocumentTitle("- News");
-	const [news, setNews] = useState([]);
+	const [newsArticles, setNewsArticles] = useState([]);
 	// values.image !== "" &&
 	const sym = "AAPL";
 	axios
 		.get(process.env.REACT_APP_LOCAL + `news?id=${sym}`)
 		.then((response) => {
-			setNews(response.data);
-			//console.log(response.data.news.result)
+			setNewsArticles(response.data.news.result);
 		})
 		.catch((err) => console.log(err));
 	// const news = company_news.slice(20, 25).map((values, key) => {
-		const newss = news.map((values, key) => {
-			
+	//console.log(newsArticles)
+	const articles = newsArticles.slice(0, 10).map((values, key) => {
 		return (
 			values.summary !== "" && (
 				<div key={key}>
@@ -36,7 +35,7 @@ const News = () => {
 				<div className='news_favourites'>
 					<Favourites />
 				</div>
-				<div className='news_container'>{newss}</div>
+				<div className='news_container'>{articles}</div>
 			</div>
 		</>
 	);

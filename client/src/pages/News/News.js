@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Favourites from "../../components/layouts/favourites/Favourites";
 import NewsComp from "../../components/layouts/news_comp/News_comp";
 //import company_news from "../../components/layouts/news_comp/company-news";
@@ -11,15 +11,17 @@ const News = () => {
 	const [newsArticles, setNewsArticles] = useState([]);
 	// values.image !== "" &&
 	const sym = "AAPL";
-	axios
-		.get(process.env.REACT_APP_LOCAL + `news?id=${sym}`)
-		.then((response) => {
+	useEffect(() => {
+		axios.get(process.env.REACT_APP_LOCAL + `news?id=${sym}`)
+		.then(response => {
 			setNewsArticles(response.data.news.result);
 		})
 		.catch((err) => console.log(err));
+  }, []);
+	
 	// const news = company_news.slice(20, 25).map((values, key) => {
 	//console.log(newsArticles)
-	const articles = newsArticles.map((values, key) => {
+	const articles = newsArticles.slice(0, 10).map((values, key) => {
 		return (
 			values.summary !== "" && (
 				<div key={key}>
@@ -28,6 +30,7 @@ const News = () => {
 			)
 		);
 	});
+
 	return (
 		<>
 			<h1 className='news_title'>Finance & Business News</h1>
@@ -42,3 +45,31 @@ const News = () => {
 };
 
 export default News;
+
+/* 
+
+	useDocumentTitle("- News");
+	const [newsArticles, setNewsArticles] = useState([]);
+	// values.image !== "" &&
+	const sym = "AAPL";
+	useEffect(() => {
+		axios.get(process.env.REACT_APP_LOCAL + `news?id=${sym}`)
+		.then(response => {
+			setNewsArticles(response.data.news.result);
+		})
+		.catch((err) => console.log(err));
+  }, []);
+	
+	// const news = company_news.slice(20, 25).map((values, key) => {
+	//console.log(newsArticles)
+	const articles = newsArticles.slice(0, 10).map((values, key) => {
+		return (
+			values.summary !== "" && (
+				<div key={key}>
+					<NewsComp image={values.image} headline={values.headline} summary={values.summary} url={values.url} />
+				</div>
+			)
+		);
+	});
+
+*/

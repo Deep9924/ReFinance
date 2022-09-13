@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react"; //, useEffect
 import { useLocation } from "react-router-dom";
 import Graph from "../../components/layouts/graph/Graph";
 import sym from "../../components/layouts/graph/interval";
@@ -12,24 +12,24 @@ import NewsComp from "../../components/layouts/news_comp/News_comp";
 
 const Stock = () => {
 	useDocumentTitle("- Stock");
+	const { state } = useLocation();	
 	const [newsArticles, setNewsArticles] = useState([]);
-	const { state } = useLocation();
 
+	useEffect(() => {
+		if (state !== null){
+			axios.get(process.env.REACT_APP_LOCAL + `news?id=${state.symbol}`)
+			.then(response => {
+				setNewsArticles(response.data.news.result);
+			})
+			.catch((err) => console.log(err));
+		}
+	}, [state]);
+	
 	if (state == null) {
 		return <NotFound />;
 	}
 
-	// values.image !== "" &&
-	//const symbol = "AAPL";
-	axios
-		.get(process.env.REACT_APP_LOCAL + `news?id=${state.symbol}`)
-		.then((response) => {
-			setNewsArticles(response.data.news.result);
-		})
-		.catch((err) => console.log(err));
-	// const news = company_news.slice(20, 25).map((values, key) => {
-	//console.log(newsArticles)
-	const articles = newsArticles.map((values, key) => {
+	const articles = newsArticles.slice(0, 10).map((values, key) => {
 		return (
 			values.summary !== "" && (
 				<div key={key}>

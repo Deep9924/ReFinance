@@ -37,7 +37,7 @@ const Search = ({ placeholder }) => {
 
     const handleKeyPress = (e) => {
         if (e.key === 'Enter' && filteredData[0] != null) {
-            navigate("/stock", { state: { symbol: filteredData[0].Symbol } })
+            navigate("/stock", { state: { symbol: filteredData[0].symbol } })
             setfilteredData([]);
         }
     };

@@ -20,7 +20,7 @@ const findDataApi = async (stockName, fieldName) => {
 			//${process.env.FINHUB_API_KEY};
 			let startDate = new Date(Date.now() - 604800).toISOString().slice(0, 10);
 			let endDate = new Date().toISOString().slice(0, 10);
-			dataLink = `https://finnhub.io/api/v1/company-news?symbol=${stockName}&from=${startDate}&to=${endDate}&token=cc7sokqad3i03farbm4g`;
+			dataLink = `https://finnhub.io/api/v1/company-news?symbol=${stockName}&from=${startDate}&to=${endDate}&token=${process.env.FINHUB_API_KEY}`;
 			return await getDataApi(dataLink);
 		case "index":
 			dataLink = `https://api.twelvedata.com/quote?symbol=SPX,IXIC,DJIA,RUT,COMP,BTC/USD,ETH/USD&apikey=${process.env.STOCK_TOKEN}`;
@@ -30,12 +30,12 @@ const findDataApi = async (stockName, fieldName) => {
 			const startDates = Math.floor(Date.now() / 1000 - 432000);
 			const endDates = Math.floor(Date.now() / 1000);
 
-			dataLink = `https://finnhub.io/api/v1/stock/candle?symbol=${stockName}&resolution=5&from=${startDates}&to=${endDates}&token=cc7sokqad3i03farbm4g`;
+			dataLink = `https://finnhub.io/api/v1/stock/candle?symbol=${stockName}&resolution=5&from=${startDates}&to=${endDates}&token=${process.env.FINHUB_API_KEY}`;
 			return await getDataApi(dataLink);
 		case "info":
-			const another = "https://finnhub.io/api/v1/stock/price-metric?symbol=AAPL&token=cc7sokqad3i03farbm4g";
-			const basic_financial = "https://finnhub.io/api/v1/stock/metric?symbol=AAPL&metric=all&token=cc7sokqad3i03farbm4g";
-			dataLink = `https://finnhub.io/api/v1/quote?symbol=${stockName}&token=cc7sokqad3i03farbm4g`;
+			const another = "https://finnhub.io/api/v1/stock/price-metric?symbol=AAPL&token=${process.env.FINHUB_API_KEY}";
+			const basic_financial = "https://finnhub.io/api/v1/stock/metric?symbol=AAPL&metric=all&token=${process.env.FINHUB_API_KEY}";
+			dataLink = `https://finnhub.io/api/v1/quote?symbol=${stockName}&token=${process.env.FINHUB_API_KEY}`;
 			return await getDataApi(dataLink);
 		default:
 			console.log("Error Occured, Try Again!");

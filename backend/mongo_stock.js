@@ -1,7 +1,9 @@
 const axios = require("axios");
-const db = require("./mongo");
 require("dotenv").config();
-
+const { MongoClient } = require("mongodb");
+const client = new MongoClient(process.env.DATABASE_MONGO);
+const db = client.db("Refinance").collection("Refinance_Stock");
+client.connect();
 const getDataApi = async (link) => {
 	return await axios
 		.get(link)
@@ -44,18 +46,23 @@ const findDataApi = async (stockName, fieldName) => {
 
 // Check if the field exist or not (return 1 if not, 0 if it is)
 const checkFieldNotExist = async (stockName, fieldName) => {
-	return await db.count({ symbol: stockName, [fieldName]: null });
+	const res = await db.count({ symbol: stockName, [fieldName]: null });
+
+	return res;
 };
 
 // Search Data for the fieldName
 const searchData = async (stockName, fieldName) => {
-	return await db.findOne({ symbol: stockName });
+	const res = await db.findOne({ symbol: stockName });
+
+	return res;
 	//, { projection: {currency: 1, description: 1}}
 };
 
 // Update Data if data is less than 5 minutes
 const updateData = async (stockName, fieldName) => {
 	let result = await findDataApi(stockName, fieldName);
+
 	//result = { ...result, LastUpdated: new Date(Date.now()) };
 	await db.updateOne(
 		{ symbol: stockName },
@@ -66,7 +73,9 @@ const updateData = async (stockName, fieldName) => {
 		},
 		{ upsert: true }
 	);
-	return await searchData(stockName, fieldName);
+	const res = await searchData(stockName, fieldName);
+
+	return res;
 };
 
 const getData = async (stockName, fieldName) => {

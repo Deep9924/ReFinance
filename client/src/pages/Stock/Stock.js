@@ -14,7 +14,6 @@ const Stock = () => {
 	useDocumentTitle("- Stock");
 	const { state } = useLocation();	
 	const [newsArticles, setNewsArticles] = useState([]);
-
 	useEffect(() => {
 		if (state !== null){
 			axios.get(process.env.REACT_APP_LOCAL + `news?id=${state.symbol}`)

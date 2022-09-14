@@ -1,9 +1,9 @@
-/* const { MongoClient } = require("mongodb");
+const { MongoClient } = require("mongodb");
 const client = new MongoClient(process.env.DATABASE_MONGO);
 client.connect();
-require("dotenv").config(); */
+require("dotenv").config();
 
-const db = require("./mongo");
+const db = client.db("Refinance").collection("Refinance_Stock");
 
 const mongo_db = async (searchData) => {
 	try {
@@ -50,5 +50,4 @@ const mongo_db = async (searchData) => {
 		return error;
 	}
 };
-
 module.exports = mongo_db;

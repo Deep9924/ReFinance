@@ -28,7 +28,7 @@ const Stock = () => {
 	if (state == null) {
 		return <NotFound />;
 	}
-
+//console.log(newsArticles)
 	const articles = newsArticles.slice(0, 10).map((values, key) => {
 		return (
 			values.summary !== "" && (

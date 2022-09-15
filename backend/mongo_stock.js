@@ -58,6 +58,9 @@ const searchData = async (stockName) => {
 	const res = await db.findOne({ symbol: stockName });
 	//console.log("result", res.news.result);
 	res.news.result.map((res) => {
+		if (res.headline.length > 52) {
+			res.summary = res.summary.substring(0, 120) + ",";
+		}
 		if (res.summary.length > 150) {
 			res.summary = res.summary.substring(0, 150) + ",";
 		}

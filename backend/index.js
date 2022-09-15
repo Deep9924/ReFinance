@@ -38,7 +38,7 @@ app.get("/news", async (req, res) => {
 	const result = await mongo_stock(req.query.id, "news");
 	return res.json(result);
 });
-
+ 
 
 
 app.get("/indices", (req, res) => {

@@ -60,7 +60,7 @@ const searchData = async (stockName) => {
 	//, { projection: {currency: 1, description: 1}}
 };
 
-const updateForNews = async (stockName, result) => {
+const updateForNews = async (stockName, fieldName, result) => {
 	await db.updateOne(
 		{ symbol: stockName },
 		{
@@ -92,7 +92,7 @@ const updateData = async (stockName, fieldName) => {
 	let result = await findDataApi(stockName, fieldName);
 	switch (fieldName) {
 		case "news":
-			await updateForNews(stockName, result);
+			await updateForNews(stockName, fieldName, result);
 		case "index":
 			await updateForIndex(stockName, result);
 		case "candle":

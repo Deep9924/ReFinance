@@ -56,7 +56,12 @@ const checkFieldNotExist = async (stockName, fieldName) => {
 // Search Data for the fieldName
 const searchData = async (stockName) => {
 	const res = await db.findOne({ symbol: stockName });
-
+	//console.log("result", res.news.result);
+	res.news.result.map((res) => {
+		if (res.summary.length > 150) {
+			res.summary = res.summary.substring(0, 150) + ",";
+		}
+	});
 	return res;
 	//, { projection: {currency: 1, description: 1}}
 };

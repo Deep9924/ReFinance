@@ -55,7 +55,7 @@ const checkFieldNotExist = async (stockName, fieldName) => {
 // Search Data for the fieldName
 const searchData = async (stockName) => {
 	const res = await db.findOne({ symbol: stockName });
-
+	
 	return res;
 	//, { projection: {currency: 1, description: 1}}
 };
@@ -119,13 +119,14 @@ const getData = async (stockName, fieldName) => {
 	if (LastUpdatedUnix <= fiveMinuteDelayUnix) {
 		return await updateData(stockName, fieldName);
 	}
-
+	
 	return result;
 };
 
 const mongo_stock = async (stockName, fieldName) => {
 	try {
 		const result = await getData(stockName, fieldName);
+		
 		return result;
 	} catch (error) {
 		console.error("error", error);

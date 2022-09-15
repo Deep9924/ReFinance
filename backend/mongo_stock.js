@@ -3,6 +3,7 @@ require("dotenv").config();
 const { MongoClient } = require("mongodb");
 const client = new MongoClient(process.env.DATABASE_MONGO);
 const db = client.db("Refinance").collection("Refinance_Stock");
+//const db_test = client.db("Refinance").collection("stock");
 client.connect();
 
 const getDataApi = async (link) => {
@@ -72,7 +73,34 @@ const updateForNews = async (stockName, fieldName, result) => {
 	);
 };
 
+const updateForNewsTest = async (stockName, fieldName, result) => {
+	await db.updateOne(
+		{ symbol: stockName },
+		{
+			$set: {
+				[fieldName]: { result, LastUpdated: new Date(Date.now()) },
+			},
+		},
+		{ upsert: true }
+	);
+};
+
 const updateForIndex = async (stockName, result) => {
+	await db.updateOne(
+		{ symbol: stockName },
+		{
+			$set: {
+				percent_change: "1.2%",
+				open: "10.00",
+				change: "0.01",
+				LastUpdated: new Date(Date.now()),
+			},
+		},
+		{ upsert: true }
+	);
+};
+
+const updateForIndexTest = async (stockName, result) => {
 	await db.updateOne(
 		{ symbol: stockName },
 		{

@@ -20,10 +20,10 @@ api_key.apiKey = "<API_key>"; // Replace this
 const finnhubClient = new finnhub.DefaultApi();
 // https://www.npmjs.com/package/finnhub
 
-app.get("/test", async (req, res) => {
+/* app.get("/test", async (req, res) => {
 	const result = await mongo_stock(req.query.id);
 	return res.send(result);
-})
+}) */
 
 app.get("/", (req, res) => {
 	res.status(200).send("WHATABYTE: Food For Devs");
@@ -39,17 +39,7 @@ app.get("/news", async (req, res) => {
 	return res.json(result);
 });
 
-/* app.get("/news", (req, res) => {
-	const link = "https://finnhub.io/api/v1/company-news?symbol=AAPL&from=2022-08-01&to=2022-08-31&token=cc7sokqad3i03farbm4g";
-	//const symbol_quote = `https://api.twelvedata.com/quote?symbol=SPX,IXIC,DJIA,RUT,COMP,BTC/USD,ETH/USD&apikey=${process.env.STOCK_TOKEN}`;
-	axios
-		.get(link)
-		.then((response) => {
-			const data = response.data;
-			res.json(data);
-		})
-		.catch((err) => console.log(err));
-}); */
+
 
 app.get("/indices", (req, res) => {
 	const symbol_quote = `https://api.twelvedata.com/quote?symbol=SPX,IXIC,DJIA,RUT,COMP,BTC/USD,ETH/USD&apikey=${process.env.STOCK_TOKEN}`;
@@ -134,6 +124,19 @@ app.listen(port, () => {
 });
 
 // db.Refinance_Stock.updateMany({description: ""}, {$set: {description}})
+
+/* app.get("/news", (req, res) => {
+	const link = "https://finnhub.io/api/v1/company-news?symbol=AAPL&from=2022-08-01&to=2022-08-31&token=cc7sokqad3i03farbm4g";
+	//const symbol_quote = `https://api.twelvedata.com/quote?symbol=SPX,IXIC,DJIA,RUT,COMP,BTC/USD,ETH/USD&apikey=${process.env.STOCK_TOKEN}`;
+	axios
+		.get(link)
+		.then((response) => {
+			const data = response.data;
+			res.json(data);
+		})
+		.catch((err) => console.log(err));
+}); */
+
 
 /* 
   app.get("/mongo_auto", async (req, res) => {

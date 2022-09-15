@@ -134,17 +134,3 @@ const mongo_stock = async (stockName, fieldName) => {
 };
 
 module.exports = mongo_stock;
-
-/* // Check if the field exist or not (return 1 if not, 0 if it is)
-const checkFieldNotExist = async (stockName, fieldName) => {
-	return await db.count({ symbol: stockName, [fieldName]: null });
-	//db.inventory.find( { qty: { $exists: true, $nin: [ 5, 15 ] } } )
-}; 
-
-// Insert Data if data does not exist
-const insertData = async (stockName, fieldName) => {
-	const result = await findDataApi(stockName, fieldName);
-	await db.updateOne({ symbol: stockName }, { $set: { [fieldName]: result } }, { upsert: true });
-	return await searchData(stockName, fieldName);
-};
- */

@@ -22,7 +22,7 @@ const NewsComp = (props) => {
           </div>
 
           <div className='summary'>
-            <p>{summary} <span className='extraLength'>Click for more...</span></p>
+            <p>{summary}</p>
           </div>
         </div>
 

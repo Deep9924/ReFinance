@@ -57,19 +57,27 @@ const checkFieldNotExist = async (stockName, fieldName) => {
 const searchData = async (stockName) => {
 	const res = await db.findOne({ symbol: stockName });
 	//console.log("result", res.news.result);
-	res.news.result.map((res) => {
+	/* res.news.result.map((res) => {
 		if (res.headline.length > 52) {
-			res.summary = res.summary.substring(0, 120) + ",";
+			res.summary = res.summary.substring(0, 120) + "...";
 		}
 		if (res.summary.length > 150) {
-			res.summary = res.summary.substring(0, 150) + ",";
+			res.summary = res.summary.substring(0, 150) + "...";
 		}
-	});
+	}); */
 	return res;
 	//, { projection: {currency: 1, description: 1}}
 };
 
 const updateForNews = async (stockName, fieldName, result) => {
+	result.map((res) => {
+		if (res.headline.length > 52) {
+			res.summary = res.summary.substring(0, 120) + "...";
+		}
+		if (res.summary.length > 150) {
+			res.summary = res.summary.substring(0, 150) + "...";
+		}
+	});
 	await db.updateOne(
 		{ symbol: stockName },
 		{
@@ -126,13 +134,19 @@ const updateForIndexTest = async (stockName, result) => {
 // Update Data if data is less than 5 minutes
 const updateData = async (stockName, fieldName) => {
 	let result = await findDataApi(stockName, fieldName);
-	switch (fieldName) {
-		case "news":
-			await updateForNews(stockName, fieldName, result);
-		case "index":
-			await updateForIndex(stockName, result);
-		case "candle":
-			await updateForIndex(stockName, result);
+	if (result !== ""){
+		switch (fieldName) {
+			case "news":
+				//console.log("In here")
+				await updateForNews(stockName, fieldName, result);
+				break;
+			case "index":
+				await updateForIndex(stockName, result);
+				break;
+			case "candle":
+				await updateForIndex(stockName, result);
+				break;
+		}
 	}
 	//result = { ...result, LastUpdated: new Date(Date.now()) };
 
@@ -159,10 +173,35 @@ const getData = async (stockName, fieldName) => {
 	return result;
 };
 
+const searchAllNews = async () => {
+	//const news_db = client.db("Refinance").collection("News");
+const link = `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&apikey=${process.env.ALPHA_KEY}`
+	const res = await getDataApi(link);
+	//console.log(res)
+	//const res = await db.find({"news.result" : {$exists:true, $nin:[null, "", []]}}, { sort: {"news.result.datetime": -1}, limit: 7, projection: {"news.result": 1, _id: 0}}).toArray();
+
+	//console.log("result", res.news.result);
+	/* res.news.result.map((res) => {
+		if (res.headline.length > 52) {
+			res.summary = res.summary.substring(0, 120) + "...";
+		}
+		if (res.summary.length > 150) {
+			res.summary = res.summary.substring(0, 150) + "...";
+		}
+	}); */
+	return res;
+	//, { projection: {currency: 1, description: 1}}
+};
+
 const mongo_stock = async (stockName, fieldName) => {
 	try {
-		const result = await getData(stockName, fieldName);
-		return result;
+		if (stockName === undefined){
+			const result = await searchAllNews();
+			console.log(result)
+			return result;
+		}
+			const result = await getData(stockName, fieldName);
+			return result;	
 	} catch (error) {
 		console.error("error", error);
 		return error;

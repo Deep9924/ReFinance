@@ -7,3 +7,4 @@ const db = client.db("Refinance").collection("Refinance_Stock");
 
 
 module.exports = db;
+

@@ -1,0 +1,121 @@
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./Stock.css";
+import { Navigate, useParams } from "react-router-dom";
+import { useDocumentTitle } from "../../components/layouts/Title/Title";
+import { Typography, Box } from "@mui/material";
+import { useAuth } from "../../firebase/AuthContext";
+import Graph from "../../components/layouts/graph/Graph";
+import NewsComp from "../../components/layouts/news_comp/News_comp";
+import Favourites from "../../components/layouts/favourites/Favourites";
+
+const Stock = () => {
+	useDocumentTitle("- Stock");
+	const { symbol } = useParams();
+	const [homeNews, setHomeNews] = useState([]);
+	const [stockData, setStockData] = useState();
+	const [stockNews, setStockNews] = useState([]);
+	const [stockCandle, setStockCandle] = useState();
+	const [stockInfoData, setStockInfoData] = useState([]);
+	const { currentUser } = useAuth();
+	const [userData, setUserData] = useState([]);
+	const [validURL, setValidURL] = useState(true);
+
+	useEffect(() => {
+		axios
+			.get(process.env.REACT_APP_LOCAL + `stock?id=${symbol}&field=stock`)
+			.then((res) => {
+				setStockInfoData(res.data);
+			})
+			.catch((err) => (err.response.status === 400 ? setValidURL(false) : "")); //(err) => console.log(err.response.status)
+		axios
+			.get(process.env.REACT_APP_LOCAL + `stock?id=${symbol}&field=data`)
+			.then((res) => {
+				setStockData(res.data.data.result.metric);
+			})
+			.catch((err) => (err.response.status === 400 ? setValidURL(false) : ""));
+		axios
+			.get(process.env.REACT_APP_LOCAL + `stock?id=${symbol}&field=news`)
+			.then((res) => {
+				setStockNews(res.data.news.result);
+			})
+			.catch((err) => (err.response.status === 400 ? setValidURL(false) : ""));
+		axios
+			.get(process.env.REACT_APP_LOCAL + `stock?id=${symbol}&field=candle`)
+			.then((res) => setStockCandle(res.data.candle.result))
+			.catch((err) => (err.response.status === 400 ? setValidURL(false) : ""));
+	}, [symbol]);
+
+	useEffect(() => {
+		axios
+			.get(process.env.REACT_APP_LOCAL + "homenews")
+			.then((res) => setHomeNews(res.data))
+			.catch((err) => console.log(err));
+	}, []);
+
+	useEffect(() => {
+		if (currentUser) {
+			axios
+				.post(process.env.REACT_APP_LOCAL + "user", {
+					user_email: currentUser.email.toLowerCase(),
+				})
+				.then((res) => {
+					setUserData(res.data.favourites);
+				}) //console.log(res.data.favourites);
+				.catch((err) => console.log(err));
+		}
+	}, [currentUser]);
+
+	const topNews = homeNews.map((values) => {
+		return (
+			!values.summary && (
+				<div key={values.title}>
+					<NewsComp
+						image={values.image}
+						title={values.title}
+						description={values.description}
+						link={values.link}
+						uploaded_datetime={values.uploaded_datetime / 1000}
+					/>
+				</div>
+			)
+		);
+	});
+
+	const news = stockNews && stockNews.map((values) => {
+			return (
+				<div key={values.id}>
+					<NewsComp image={values.image} title={values.headline} description={values.summary} link={values.url} uploaded_datetime={values.datetime} />
+				</div>
+			);
+		});
+
+	return validURL ? (
+		<div className='main_test'>
+			<div className='mainweb'>
+				<div className='home_graph'>
+					<Graph symbol={symbol} stockData={stockData} stockCandle={stockCandle} stockInfoData={stockInfoData} userData={userData} />
+				</div>
+				<div className='favourite'>
+					<Favourites />
+				</div>
+				<div className='news'>
+					{stockNews.length === 0 ? (
+						<Box>
+							<Typography component='h1' variant='h5' sx={{ mt: 6, mb: 2 }}>
+								No news found for this stock, but here is top news:
+							</Typography>
+							{topNews}
+						</Box>
+					) : (
+						news
+					)}
+				</div>
+			</div>
+		</div>
+	) : (
+		<Navigate to='/notfound' />
+	);
+};
+
+export default Stock;

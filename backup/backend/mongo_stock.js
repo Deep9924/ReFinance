@@ -37,7 +37,7 @@ const findDataApi = async (stockName, fieldName) => {
 			dataLink = `https://finnhub.io/api/v1/stock/candle?symbol=${stockName}&resolution=5&from=${startDates}&to=${endDates}&token=${process.env.FINHUB_API_KEY}`;
 			return await getDataApi(dataLink);
 		case "info":
-			const another = `https://finnhub.io/api/v1/stock/price-metric?symbol=${stockName}&token=${process.env.FINHUB_API_KEY}`;
+			
 			const basic_financial = `https://finnhub.io/api/v1/stock/metric?symbol=${stockName}&metric=all&token=${process.env.FINHUB_API_KEY}`;
 			dataLink = `https://finnhub.io/api/v1/quote?symbol=${stockName}&token=${process.env.FINHUB_API_KEY}`;
 			return await getDataApi(dataLink);
@@ -49,7 +49,6 @@ const findDataApi = async (stockName, fieldName) => {
 // Check if the field exist or not (return 1 if not, 0 if it is)
 const checkFieldNotExist = async (stockName, fieldName) => {
 	const res = await db.count({ symbol: stockName, [fieldName]: null });
-
 	return res;
 };
 

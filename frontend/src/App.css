@@ -1,0 +1,40 @@
+*{
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --primary: #ffffff;
+}
+
+ul, li{
+  list-style-type: none;
+}
+
+a{
+  text-decoration: none !important;
+  color: #333;
+}
+
+body{
+  color: #333;
+}
+
+.primary-color{
+  color: var(--primary);
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 3px solid #92f3a9ad;
+  transition: 0.12s;
+}
+
+.navigation{
+  margin: 15px 10px 0;
+}

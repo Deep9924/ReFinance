@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'; //,  { useState, useEffect }
+import React, { useState } from 'react'; //,  { useState, useEffect }
 import { List, ListItem, ListItemButton, ListItemText, Divider, Typography, Rating } from '@mui/material'; //Button
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../firebase/AuthContext';
@@ -7,17 +7,8 @@ import axios from 'axios';
 
 const LoggedInFavourites = () => { //{userData}
   const navigate = useNavigate();
-  const { currentUser } = useAuth();
-  const [userData, setUserData] = useState([]);
-
-  useEffect(() => {
-    axios
-      .post(process.env.REACT_APP_LOCAL + "user", {
-        user_email: currentUser.email.toLowerCase()
-      })
-      .then((res) => { setUserData(res.data.favourites); }) //console.log(res.data.favourites);
-      .catch((err) => console.log(err));
-  }, [currentUser.email])
+  const { currentUser, userProfile } = useAuth();
+  const [userData, setUserData] = useState(userProfile && userProfile.favourites);
 
   function handleAddorRemove(stockName) {
     if (userData.includes(stockName)) {
@@ -39,14 +30,14 @@ const LoggedInFavourites = () => { //{userData}
 
     <List>
       <Typography variant='h6' sx={{ ml: 2, mb: -1, fontWeight: "bold" }}>Favourites</Typography>
-      {userData && userData.length === 0 ? (
+      {userProfile && userProfile.favourites.length === 0 ? (
         <List>
           <ListItem sx={{ mt: '3rem' }}>
             <Typography variant='body2' sx={{ ml: 1.4, fontWeight: "bold" }}>Add a stock to favourites to display here
             </Typography>
           </ListItem>
         </List>
-      ) : (userData && userData.map((stockName) => {
+      ) : (userProfile && userProfile.favourites.map((stockName) => {
         return (
           <div key={stockName}>
             <ListItem disablePadding>

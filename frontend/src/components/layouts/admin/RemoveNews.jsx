@@ -56,10 +56,10 @@ const RemoveNews = () => {
     }
     setLoading(false);
 
-    console.log({
+    /* console.log({
       news_title: title,
       news_link: link,
-    });
+    }); */
   };
 
   return (

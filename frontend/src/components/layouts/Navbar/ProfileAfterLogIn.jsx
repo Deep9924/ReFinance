@@ -1,11 +1,10 @@
 //https://mui.com/material-ui/react-app-bar/#main-content
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
 import { Box, IconButton, Menu, Avatar, Tooltip, MenuItem, Typography, ListItemIcon } from "@mui/material";
 import Logout from '@mui/icons-material/Logout';
 import { useAuth } from '../../../firebase/AuthContext';
-import axios from 'axios';
 
 const settings = [
   { "name": "Add Stock", "func": "addstock" },
@@ -16,18 +15,8 @@ const settings = [
 const ProfileAfterLogIn = () => {
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [error, setError] = useState("");
-  const [userData, setUserData] = useState();
-  const { logout, currentUser } = useAuth()
+  const { logout, userProfile } = useAuth();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    axios
-      .post(process.env.REACT_APP_LOCAL + "user", {
-        user_email: currentUser.email.toLowerCase()
-      })
-      .then((res) => { setUserData(res.data); })
-      .catch((err) => console.log(err));
-  }, [currentUser.email]);
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -54,7 +43,7 @@ const ProfileAfterLogIn = () => {
       <Box sx={{ flexGrow: 0 }}>
         <Tooltip title="Open menu">
           <IconButton onClick={handleOpenUserMenu} sx={{ ml: 3, mr: -1.5, p: 0 }}>
-            <Avatar alt={userData && userData.firstname} src={userData && userData.avatar} />
+            <Avatar alt={userProfile && userProfile.firstname} src={userProfile && userProfile.avatar} />
           </IconButton>
         </Tooltip>
         <Menu
@@ -73,8 +62,8 @@ const ProfileAfterLogIn = () => {
           open={Boolean(anchorElUser)}
           onClose={handleCloseUserMenu}
         >
-          <Typography textAlign="left" sx={{ ml: 2, mr: 2, fontSize: 18, fontWeight: 600 }}>{userData && ("Hello, " + userData.firstname)}</Typography>
-          {userData && userData.role === "admin" ?
+          <Typography textAlign="left" sx={{ ml: 2, mr: 2, fontSize: 18, fontWeight: 600 }}>{userProfile && ("Hello, " + userProfile.firstname)}</Typography>
+          {userProfile && userProfile.role === "admin" ?
             settings.map((setting) => (
               <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
                 <NavLink to={`/${setting.func}`}>

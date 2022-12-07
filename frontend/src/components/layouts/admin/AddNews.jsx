@@ -93,12 +93,12 @@ const AddNews = () => {
     }
     setLoading(false);
 
-    console.log({
+    /* console.log({
       news_title: title,
       news_description: description,
       news_image: imageLink,
       news_link: link,
-    });
+    }); */
   };
 
   return (

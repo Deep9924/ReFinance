@@ -85,13 +85,13 @@ const AddStock = () => {
     }
     setLoading(false);
 
-    console.log({
+    /* console.log({
       symbol,
       description,
       currency,
       mic,
       type
-    });
+    }); */
   };
 
   return (

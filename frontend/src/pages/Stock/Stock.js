@@ -20,31 +20,32 @@ const Stock = () => {
 	const { currentUser } = useAuth();
 	const [userData, setUserData] = useState([]);
 	const [validURL, setValidURL] = useState(true);
+	const sym = symbol.toUpperCase();
 
 	useEffect(() => {
 		axios
-			.get(process.env.REACT_APP_LOCAL + `stock?id=${symbol}&field=stock`)
+			.get(process.env.REACT_APP_LOCAL + `stock?id=${sym}&field=stock`)
 			.then((res) => {
 				setStockInfoData(res.data);
 			})
 			.catch((err) => (err.response.status === 400 ? setValidURL(false) : "")); //(err) => console.log(err.response.status)
 		axios
-			.get(process.env.REACT_APP_LOCAL + `stock?id=${symbol}&field=data`)
+			.get(process.env.REACT_APP_LOCAL + `stock?id=${sym}&field=data`)
 			.then((res) => {
 				setStockData(res.data.data.result.metric);
 			})
 			.catch((err) => (err.response.status === 400 ? setValidURL(false) : ""));
 		axios
-			.get(process.env.REACT_APP_LOCAL + `stock?id=${symbol}&field=news`)
+			.get(process.env.REACT_APP_LOCAL + `stock?id=${sym}&field=news`)
 			.then((res) => {
 				setStockNews(res.data.news.result);
 			})
 			.catch((err) => (err.response.status === 400 ? setValidURL(false) : ""));
 		axios
-			.get(process.env.REACT_APP_LOCAL + `stock?id=${symbol}&field=candle`)
+			.get(process.env.REACT_APP_LOCAL + `stock?id=${sym}&field=candle`)
 			.then((res) => setStockCandle(res.data.candle.result))
 			.catch((err) => (err.response.status === 400 ? setValidURL(false) : ""));
-	}, [symbol]);
+	}, [sym]);
 
 	useEffect(() => {
 		axios
@@ -82,7 +83,9 @@ const Stock = () => {
 		);
 	});
 
-	const news = stockNews && stockNews.map((values) => {
+	const news =
+		stockNews &&
+		stockNews.map((values) => {
 			return (
 				<div key={values.id}>
 					<NewsComp image={values.image} title={values.headline} description={values.summary} link={values.url} uploaded_datetime={values.datetime} />
@@ -94,7 +97,7 @@ const Stock = () => {
 		<div className='main_test'>
 			<div className='mainweb'>
 				<div className='home_graph'>
-					<Graph symbol={symbol} stockData={stockData} stockCandle={stockCandle} stockInfoData={stockInfoData} userData={userData} />
+					<Graph symbol={sym} stockData={stockData} stockCandle={stockCandle} stockInfoData={stockInfoData} userData={userData} />
 				</div>
 				<div className='favourite'>
 					<Favourites />

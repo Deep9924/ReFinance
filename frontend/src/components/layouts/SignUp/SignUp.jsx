@@ -114,14 +114,14 @@ const SignUp = () => {
     }
     setLoading(false);
 
-    console.log({
+    /* console.log({
       firstname: firstname,
       lastname: lastname,
       email: email,
       password: password,
       cpassword: cpassword,
       avatar: avatarLink,
-    });
+    }); */
   };
 
   return (

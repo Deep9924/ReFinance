@@ -66,11 +66,11 @@ const RemoveStock = () => {
     }
     setLoading(false);
 
-    console.log({
+    /* console.log({
       symbol,
       currency,
       type
-    });
+    }); */
   };
 
   return (

@@ -18,7 +18,7 @@ const StockInfo = (stockDataInfo) => {
   ];
 
   return (
-    <Box sx={{ ml: 0.7, mr: 3, boxShadow: 3, borderRadius: 3, width: '100%', minHeight: 250, minWidth: 220, maxWidth: 360, }}>
+    <Box sx={{ mt: -4, ml: 0.7, mr: 3, boxShadow: 3, borderRadius: 3, width: '100%', minHeight: 250, minWidth: 220, maxWidth: 360, }}>
       <List>
       <Typography variant='h6' sx={{ ml: 2, mb: -1, fontWeight: "bold" }}>Stock Info </Typography>
       {stockInfoDataName.map((info) => (

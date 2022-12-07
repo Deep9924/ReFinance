@@ -3,8 +3,9 @@ import Chart from 'chart.js/auto';
 import { Line } from 'react-chartjs-2';
 import axios from 'axios';
 import StockInfo from '../stockInfo/StockInfo';
-import { Typography, Rating } from "@mui/material";
+import { Typography, Rating, Stack } from "@mui/material"; //Divider,
 import { useAuth } from '../../../firebase/AuthContext';
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 
 import('./Graph.css');
 window.Chart = Chart
@@ -49,7 +50,7 @@ const Graph = ({ symbol, stockData, stockCandle, stockInfoData, userData }) => {
   const graph_data = {
     labels: labels,
     datasets: [{
-      label: 'My First Dataset',
+      label: '', //My First Dataset
       data: open_Data,
       fill: true,
       borderColor: "black",
@@ -102,6 +103,18 @@ const Graph = ({ symbol, stockData, stockCandle, stockInfoData, userData }) => {
               onClick={handleAddorRemove} //userData.includes(symbol) ? 1 : 0
             /> : ""}
         </Typography>
+
+        <Stack
+          direction="row"
+          sx={{ alignItems: 'center' }}
+          divider={<FiberManualRecordIcon sx={{ fontSize: 8, color: 'grey.300' }} />}//  <Divider orientation="vertical" variant="middle" flexItem />
+          spacing={0.5}
+        >
+          <Typography variant='h5'> ${data.at(-1)} </Typography>
+          <Typography variant='body1'> {stockInfoData.currency} </Typography>
+          <Typography variant='body1'> {stockInfoData.mic} </Typography>
+          <Typography variant='body1'> {stockInfoData.type} </Typography>
+        </Stack>
 
         <div className='testing_this'>
           <div className="graph">

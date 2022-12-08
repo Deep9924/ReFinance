@@ -9,6 +9,7 @@ import { AuthProvider } from "./firebase/AuthContext";
 import PrivateRoute from "./components/layouts/PrivateRouter.js/PrivateRoute";
 import { AddStock, RemoveStock, AddNews, RemoveNews } from "./components/layouts/admin";
 import NotFound from "./components/layouts/notFound/NotFound";
+//import { FavouritesContext } from "./components/layouts/context/FavouritesContext";
 
 function App() {
 	return (

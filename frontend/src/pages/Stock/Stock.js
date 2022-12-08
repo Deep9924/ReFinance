@@ -4,7 +4,6 @@ import "./Stock.css";
 import { Navigate, useParams } from "react-router-dom";
 import { useDocumentTitle } from "../../components/layouts/Title/Title";
 import { Typography, Box } from "@mui/material";
-import { useAuth } from "../../firebase/AuthContext";
 import Graph from "../../components/layouts/graph/Graph";
 import NewsComp from "../../components/layouts/news_comp/News_comp";
 import Favourites from "../../components/layouts/favourites/Favourites";
@@ -17,8 +16,6 @@ const Stock = () => {
 	const [stockNews, setStockNews] = useState([]);
 	const [stockCandle, setStockCandle] = useState();
 	const [stockInfoData, setStockInfoData] = useState([]);
-	const { currentUser } = useAuth();
-	const [userData, setUserData] = useState([]);
 	const [validURL, setValidURL] = useState(true);
 	const sym = symbol.toUpperCase();
 
@@ -54,19 +51,6 @@ const Stock = () => {
 			.catch((err) => console.log(err));
 	}, []);
 
-	useEffect(() => {
-		if (currentUser) {
-			axios
-				.post(process.env.REACT_APP_LOCAL + "user", {
-					user_email: currentUser.email.toLowerCase(),
-				})
-				.then((res) => {
-					setUserData(res.data.favourites);
-				}) //console.log(res.data.favourites);
-				.catch((err) => console.log(err));
-		}
-	}, [currentUser]);
-
 	const topNews = homeNews.map((values) => {
 		return (
 			!values.summary && (
@@ -97,7 +81,7 @@ const Stock = () => {
 		<div className='main_test'>
 			<div className='mainweb'>
 				<div className='home_graph'>
-					<Graph symbol={sym} stockData={stockData} stockCandle={stockCandle} stockInfoData={stockInfoData} userData={userData} />
+					<Graph symbol={sym} stockData={stockData} stockCandle={stockCandle} stockInfoData={stockInfoData} />
 				</div>
 				<div className='favourite'>
 					<Favourites />

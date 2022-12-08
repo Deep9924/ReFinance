@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Chart from 'chart.js/auto';
 import { Line } from 'react-chartjs-2';
-import axios from 'axios';
+//import axios from 'axios';
 import StockInfo from '../stockInfo/StockInfo';
 import { Typography, Rating, Stack } from "@mui/material"; //Divider,
 import { useAuth } from '../../../firebase/AuthContext';
@@ -10,8 +10,8 @@ import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import('./Graph.css');
 window.Chart = Chart
 
-const Graph = ({ symbol, stockData, stockCandle, stockInfoData, userData }) => {
-  const { currentUser } = useAuth();
+const Graph = ({ symbol, stockData, stockCandle, stockInfoData }) => {
+  const { currentUser, userFav, removeFromFavourites, addToFavourites } = useAuth();
   const [data, setData] = useState([]);
   const [timestamp, setTimestamp] = useState([]);
   const [rating, setRating] = useState(0);
@@ -20,6 +20,10 @@ const Graph = ({ symbol, stockData, stockCandle, stockInfoData, userData }) => {
     stockCandle && setData(stockCandle.c);
     stockCandle && setTimestamp(stockCandle.t);
   }, [stockCandle])
+
+  useEffect(() => {
+    userFav && setRating(userFav.includes(symbol) ? 1 : 0)
+  }, [userFav, symbol])
 
   const labels = timestamp.map(values => {
     return new Date(values * 1000).toLocaleDateString();
@@ -61,30 +65,7 @@ const Graph = ({ symbol, stockData, stockCandle, stockInfoData, userData }) => {
   };
 
   function handleAddorRemove() {
-    if (!userData.includes(symbol)) {
-      axios
-        .post(process.env.REACT_APP_LOCAL + "fav/addfav", {
-          user_email: currentUser.email.toLowerCase(),
-          user_favstock: symbol
-        })
-        .then(() => {
-          setRating(1)
-        }
-        )
-        .catch((err) => console.log(err));
-    }
-    if (userData.includes(symbol)) {
-      axios
-        .post(process.env.REACT_APP_LOCAL + "fav/removefav", {
-          user_email: currentUser.email.toLowerCase(),
-          user_favstock: symbol
-        })
-        .then(() => {
-          setRating(0)
-        }
-        )
-        .catch((err) => console.log(err));
-    }
+    rating === 1 ? removeFromFavourites(symbol) : addToFavourites(symbol);
   }
 
   return (
@@ -96,11 +77,10 @@ const Graph = ({ symbol, stockData, stockCandle, stockInfoData, userData }) => {
             <Rating
               name="favourites"
               max={1}
-              defaultValue={0}
-              value={rating}//{value}
+              value={rating}
               size='large'
               sx={{ ml: 2 }}
-              onClick={handleAddorRemove} //userData.includes(symbol) ? 1 : 0
+              onClick={handleAddorRemove}
             /> : ""}
         </Typography>
 

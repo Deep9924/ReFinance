@@ -5,7 +5,7 @@ import { useNavigate, NavLink } from 'react-router-dom';
 import { Box, IconButton, Menu, Avatar, Tooltip, MenuItem, Typography, ListItemIcon } from "@mui/material";
 import Logout from '@mui/icons-material/Logout';
 import { useAuth } from '../../../firebase/AuthContext';
-import { useProfile } from '../context/ProfileContext';
+import { useProfile } from '../../../../src/components/layouts/context/ProfileContext';
 
 const settings = [
   { "name": "Add Stock", "func": "addstock" },

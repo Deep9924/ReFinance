@@ -6,7 +6,7 @@ import StockInfo from '../stockInfo/StockInfo';
 import { Typography, Rating, Stack } from "@mui/material";
 import { useAuth } from '../../../firebase/AuthContext';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
-import { useProfile } from '../context/ProfileContext';
+import { useProfile } from '../../../../src/components/layouts/context/ProfileContext';
 
 import('./Graph.css');
 window.Chart = Chart

@@ -2,7 +2,7 @@ import React from 'react'; //,  { useState, useEffect }
 import { List, ListItem, ListItemButton, ListItemText, Divider, Typography, Rating } from '@mui/material'; //Button
 import { useNavigate } from 'react-router-dom';
 //import { useAuth } from '../../../firebase/AuthContext';
-import { useProfile } from '../context/ProfileContext';
+import { useProfile } from '../../../../src/components/layouts/context/ProfileContext';
 
 const LoggedInFavourites = () => {
   const navigate = useNavigate();

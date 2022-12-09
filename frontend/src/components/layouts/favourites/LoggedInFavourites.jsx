@@ -1,11 +1,11 @@
 import React from 'react'; //,  { useState, useEffect }
 import { List, ListItem, ListItemButton, ListItemText, Divider, Typography, Rating } from '@mui/material'; //Button
 import { useNavigate } from 'react-router-dom';
-import { useProfile } from '../context/ProfileContext';
+import { useAuth } from '../../../firebase/AuthContext';
 
 const LoggedInFavourites = () => {
   const navigate = useNavigate();
-  const { userFav, removeFromFavourites } = useProfile();
+  const { userFav, removeFromFavourites } = useAuth(); //userProfile, 
 
   function handleAddorRemove(stockName) {
     return removeFromFavourites(stockName);

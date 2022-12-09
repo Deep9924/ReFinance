@@ -9,7 +9,6 @@ import { AuthProvider } from "./firebase/AuthContext";
 import PrivateRoute from "./components/layouts/PrivateRouter.js/PrivateRoute";
 import { AddStock, RemoveStock, AddNews, RemoveNews } from "./components/layouts/admin";
 import NotFound from "./components/layouts/notFound/NotFound";
-import { ProfileProvider } from "./components/layouts/context/ProfileContext";
 //import { FavouritesContext } from "./components/layouts/context/FavouritesContext";
 
 function App() {
@@ -17,7 +16,6 @@ function App() {
 		<div className='App'>
 			<Router>
 				<AuthProvider>
-					<ProfileProvider>
 						<Navbar />
 						<div className='main-body'>
 							<Container>
@@ -56,7 +54,6 @@ function App() {
 								</div>
 							</Container>
 						</div>
-					</ProfileProvider>
 				</AuthProvider>
 			</Router>
 		</div>

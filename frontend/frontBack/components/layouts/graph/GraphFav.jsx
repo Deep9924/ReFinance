@@ -6,7 +6,6 @@ import StockInfo from '../stockInfo/StockInfo';
 import { Typography, Rating, Stack } from "@mui/material";
 import { useAuth } from '../../../firebase/AuthContext';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
-import { useProfile } from '../../../../src/components/layouts/context/ProfileContext';
 
 import('./Graph.css');
 window.Chart = Chart
@@ -14,8 +13,7 @@ window.Chart = Chart
 const GraphFav = ({ symbol }) => {
   const [data, setData] = useState([]);
   const [timestamp, setTimestamp] = useState([]);
-  const { currentUser } = useAuth()
-  const { userFav, removeFromFavourites, addToFavourites } = useProfile()
+  const { currentUser, userFav, removeFromFavourites, addToFavourites } = useAuth()
   const [stockData, setStockData] = useState();
   const [stockInfoData, setStockInfoData] = useState();
   const [rating, setRating] = useState(0);

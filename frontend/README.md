@@ -4,3 +4,5 @@ open terminal
 stay in the main directory (frontend)
 type npm install 
 and it will download all of the necessary files for frontend
+
+This should help

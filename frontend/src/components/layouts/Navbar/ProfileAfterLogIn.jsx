@@ -5,6 +5,7 @@ import { useNavigate, NavLink } from 'react-router-dom';
 import { Box, IconButton, Menu, Avatar, Tooltip, MenuItem, Typography, ListItemIcon } from "@mui/material";
 import Logout from '@mui/icons-material/Logout';
 import { useAuth } from '../../../firebase/AuthContext';
+import { useProfile } from '../context/ProfileContext';
 
 const settings = [
   { "name": "Add Stock", "func": "addstock" },
@@ -15,7 +16,8 @@ const settings = [
 const ProfileAfterLogIn = () => {
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [error, setError] = useState("");
-  const { logout, userProfile } = useAuth();
+  const { logout } = useAuth();
+  const { userProfile } = useProfile();
   const navigate = useNavigate();
 
   const handleOpenUserMenu = (event) => {

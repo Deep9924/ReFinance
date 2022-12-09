@@ -1,13 +1,13 @@
 import { useDocumentTitle } from "../../components/layouts/Title/Title";
 import React from "react"; //,  { useState, useEffect }
 import { List, ListItem, ListItemText, Divider, Typography } from "@mui/material"; //Button
-import { useAuth } from "../../firebase/AuthContext";
 import GraphFav from "../../components/layouts/graph/GraphFav";
+import { useProfile } from "../../components/layouts/context/ProfileContext";
 //import axios from "axios";
 
 const Favourites = () => {
 	useDocumentTitle("- Favourites");
-	const { userFav } = useAuth();
+	const { userFav } = useProfile();
 
 	return (
 		<List>

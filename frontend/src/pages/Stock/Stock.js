@@ -78,25 +78,28 @@ const Stock = () => {
 		});
 
 	return validURL ? (
-		<div className='main_test'>
-			<div className='mainweb'>
-				<div className='home_graph'>
-					<Graph symbol={sym} stockData={stockData} stockCandle={stockCandle} stockInfoData={stockInfoData} />
+		<div className='stock_main'>
+			<div className='mainstockpage'>
+				<div className='stock_graph_news'>
+					<div className='stock_graph'>
+						<Graph symbol={sym} stockData={stockData} stockCandle={stockCandle} stockInfoData={stockInfoData} />
+					</div>
+
+					<div className='stock_news'>
+						{stockNews.length === 0 ? (
+							<Box>
+								<Typography component='h1' variant='h5' sx={{ mb: 2 }}>
+									No news found for this stock, but here is top news:
+								</Typography>
+								{topNews}
+							</Box>
+						) : (
+							news
+						)}
+					</div>
 				</div>
 				<div className='favourite'>
 					<Favourites />
-				</div>
-				<div className='news'>
-					{stockNews.length === 0 ? (
-						<Box>
-							<Typography component='h1' variant='h5' sx={{ mt: 6, mb: 2 }}>
-								No news found for this stock, but here is top news:
-							</Typography>
-							{topNews}
-						</Box>
-					) : (
-						news
-					)}
 				</div>
 			</div>
 		</div>

@@ -1,10 +1,22 @@
-.main_test {
-	max-width: 1000px;
+.stock_main {
 	margin: auto;
-	justify-content: center;
-	align-items: center;
 }
 
+.mainstockpage {
+	display: flex;
+}
+
+.stock_graph_news {
+	display: flex;
+	flex-direction: column;
+}
+
+.stock_news{
+	margin-top: 2rem;
+}
+
+
+/* 
 .mainweb {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr) 0.5fr;
@@ -23,9 +35,4 @@
 
 .news {
 	grid-area: 2 / 1 / 5 / 3;
-}
-
-.home_graph {
-	margin: 10px;
-	width: 100%;
-}
+} */

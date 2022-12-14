@@ -10,7 +10,7 @@ const NewsComp = (props) => {
   /* '&:hover': { color: "#1a28a8", }, */
 
   return (
-    <Card className='news_card' rel="noopener" sx={{ width: "770px", mb: 2, boxShadow: 2 }}> {/* boxShadow: 2 */}
+    <Card className='news_card' rel="noopener" sx={{ width: "801px", mb: 2, boxShadow: 2 }}> {/* boxShadow: 2 */}
       <Link href={link} target="_blank" sx={{ color: 'black' }}>
         <CardActionArea sx={{ display: 'flex', flexDirection: 'row' }}>
           {image ?

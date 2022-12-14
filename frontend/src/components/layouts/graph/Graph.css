@@ -1,11 +1,10 @@
 .testing_this {
-	position: relative;
 	display: flex;
 }
 
 .graph {
 	width: 100%;
-	max-width: 450px;
+	max-width: 515px;
 	margin: 10px;
 }
 

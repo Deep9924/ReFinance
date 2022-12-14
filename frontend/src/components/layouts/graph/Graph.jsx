@@ -40,8 +40,8 @@ const Graph = ({ symbol, stockData, stockCandle, stockInfoData }) => {
       padding: {
         left: 10,
         right: 10,
-        top: 20,
-        bottom: 20
+        top: 10,
+        bottom: 10
       }
     },
     plugins: {

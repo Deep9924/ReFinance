@@ -107,7 +107,7 @@ const SignUp = () => {
         user_avatar: avatarLink,
       })
         .catch((err) => console.log(err));
-      navigate("/", { replace: true })
+      navigate("/", {}, { replace: true })
     }
     catch (error) {
       setError("Failed to create an account");

@@ -73,15 +73,17 @@ const Home = () => {
 	});
 
 	return (
-		<div className='main_test'>
-			<div className='mainweb'>
-				<div className='home_graph'>
-					<Graph symbol={symbol} stockData={stockData} stockCandle={stockCandle} stockInfoData={stockInfoData} userData={userData} />
+		<div className='home_main'>
+			<div className='mainhomepage'>
+				<div className='graph_news'>
+					<div className='home_graph'>
+						<Graph symbol={symbol} stockData={stockData} stockCandle={stockCandle} stockInfoData={stockInfoData} userData={userData} />
+					</div>
+					<div className='home_news'>{news}</div>
 				</div>
 				<div className='favourite'>
 					<Favourites symbol={symbol} />
 				</div>
-				<div className='news'>{news}</div>
 			</div>
 		</div>
 	);

@@ -1,40 +1,42 @@
 import React from 'react'
 import './Footbar.css';
-import LogoImg from '../../assets/just_logo.png'
-import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import EmailIcon from '@mui/icons-material/Email';
-
+import { NavLink } from 'react-router-dom';
+import { Facebook, Twitter, LinkedIn, GitHub, Email } from '@mui/icons-material';
+//import LogoImg from '../../assets/just_logo.png'
+//FacebookRounded
 
 const Footbar = () => {
   return (
-    <div className='footer'>
-
-      <div class="footer-limiter">
-
-        <div class="footer-right">
-
-          <a href="https://www.apple.ca" _target="blank"><FacebookIcon /></a>
-          <a href="https://www.apple.ca" _target="blank"><TwitterIcon /></a>
-          <a href="https://www.apple.ca" _target="blank"><LinkedInIcon /></a>
-          <a href="https://www.apple.ca" _target="blank"><GitHubIcon /></a>
-          <a href="https://www.apple.ca" _target="blank"><EmailIcon /></a>
-
+    <div >
+      <div className="footer">
+        <div className="social">
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"><Facebook sx={{ fontSize: 30 }} /></a>
+          <a href="https://twitter.com/Deep_patel23/" target="_blank" rel="noopener noreferrer"><Twitter sx={{ fontSize: 30 }} /></a>
+          <a href="https://linkedin.com/in/deep-patel23/" target="_blank" rel="noopener noreferrer"><LinkedIn sx={{ fontSize: 30 }} /></a>
+          <a href="https://github.com/Deep9924" target="_blank" rel="noopener noreferrer"><GitHub sx={{ fontSize: 30 }} /></a>
+          <a href="mailto:email@example.com" target="_blank" rel="noopener noreferrer"><Email sx={{ fontSize: 30 }} /></a>
         </div>
 
-        <div class="footer-left">
-          <img className="footbar-img" src={LogoImg} alt="ReFinanced-Logo" />
-          <div className='conta'>
-            <p class="footer-links">ReThink Your Finances</p>
-            <p>ReFinance © 2022</p>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
+        <ul className="list" >
+          <li>
+            <NavLink to={'/'} target="_blank" rel="noopener noreferrer" >Home</NavLink>
+          </li>
+          <li>
+            <NavLink to={'/'} target="_blank" rel="noopener noreferrer" >Services</NavLink>
+          </li>
+          <li>
+            <NavLink to={'/contact'} target="_blank" rel="noopener noreferrer">About</NavLink>
+          </li>
+          <li>
+            <NavLink to={'/'} target="_blank" rel="noopener noreferrer" >Terms</NavLink>
+          </li>
+          <li>
+            <NavLink to={'/'} target="_blank" rel="noopener noreferrer" >Privacy Policy</NavLink>
+          </li>
+        </ul >
+        <h6 className="copyright" > ReThink Your Finance | ReFinance &#169; 2022</h6>
+      </div >
+    </div >
   )
 }
 

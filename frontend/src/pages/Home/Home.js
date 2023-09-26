@@ -16,7 +16,7 @@ const Home = () => {
 	const { currentUser } = useAuth();
 	const [userData, setUserData] = useState([]);
 	const symbol = "AAPL";
-
+	console.log(process.env.REACT_APP_LOCAL + `stock?id=${symbol}&field=stock`)
 	useEffect(() => {
 		axios
 			.get(process.env.REACT_APP_LOCAL + `stock?id=${symbol}&field=stock`)

@@ -1,2 +1,27 @@
 /node_modules
 .env
+
+
+
+#sudo chmod -R 777
+
+#systemctl start nginx
+
+# ssh -i c:\Users\Deep\Desktop\key\ssh-key-2023-09-22.key ubuntu@150.230.28.208
+
+# sudo pm2 -f start --name api index.js
+# sudo pm2 delete all
+
+# server {
+#     listen 80;
+
+#     location /api/ {
+#         rewrite ^/api(/.*)$ $1 break;
+#         proxy_set_header X-Real-IP $remote_addr;
+#         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+#         proxy_set_header Host $host;
+#         proxy_set_header X-NginX-Proxy true;
+#         proxy_pass http://localhost:8800/;
+#     }
+# }
+

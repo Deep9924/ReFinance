@@ -21,6 +21,6 @@ app.use("/homenews", NewsDataRoutes);
 app.use("/search", SearchDataRoutes);
 app.use("/fav", FavDataRoutes);
 
-app.listen(port, () => {
+app.listen(5000, () => {
 	console.log(`Listening to requests on http://localhost:${port}`);
 });
